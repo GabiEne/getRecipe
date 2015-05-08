@@ -1,0 +1,16 @@
+<h1><?php echo $this->greeting;?></h1>
+<?php
+$adapter = new \Zend\Db\Adapter\Adapter(
+ array(
+'driver' => 'Pdo_Mysql',
+'hostname' => 'localhost',
+'database' => 'getrecipedb',
+'username' => 'root',
+'password' => ''
+)
+ );
+$stmt = $adapter->createStatement('SELECT * FROM users');
+$results = $stmt->execute();
+foreach($results as $result)
+var_dump($result);
+ ?>
