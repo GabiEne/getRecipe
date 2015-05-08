@@ -59,6 +59,7 @@ return array(
 			        						'action'     => 'index',
 			        				),
 			        		),
+			        		//lalalala
 			        		'may_terminate' => true,
 			        		'child_routes' => array(
 			        				'index2' => array(
