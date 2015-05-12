@@ -1,0 +1,29 @@
+<?php
+ $title = 'Users';
+ $this->headTitle($title);
+ ?>
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ <p>
+
+ </p>
+
+ <table class="table">
+ <tr>
+     <th>First Name</th>
+     <th>Last Name</th>
+	 <th>City </th>
+	 <th>E-Mail</th>
+	 
+     <th>&nbsp;</th>
+ </tr>
+ <?php foreach ($users as $user) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($user->firstName);?></td>
+     <td><?php echo $this->escapeHtml($user->lastName);?></td>
+	 <td><?php echo $this->escapeHtml($user->city);?></td>
+	 <td><?php echo $this->escapeHtml($user->email);?></td>
+     <td>
+      
+ </tr>
+ <?php endforeach; ?>
+ </table>
