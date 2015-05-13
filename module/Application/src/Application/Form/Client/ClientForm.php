@@ -1,12 +1,14 @@
 <?php 
 namespace Application\Form\Client;
 
- use Zend\Form\Form;
- use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Zend\Form\Form;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Doctrine\Common\Persistence\ObjectManager as ObjectManager;
 use Application\Entity\User;
+use Zend\InputFilter\InputFilterProviderInterface;
+use Zend\Validator\ValidatorInterface;
 	
- class ClientForm extends Form
+ class ClientForm extends Form  implements InputFilterProviderInterface
  { 
    public function __construct(ObjectManager $objectManager){
          parent::__construct('client');
@@ -66,6 +68,7 @@ use Application\Entity\User;
              'options' => array(
                  'label' => 'E-mail',
              ),
+		    
          ));
 		    
 		   $this->add(array(
@@ -85,5 +88,27 @@ use Application\Entity\User;
              ),
          ));
         
+	}
+	
+	public function getInputFilterSpecification()
+	{
+		
+		return array(
+				'username' => array(
+						'required' => true
+				 ),
+				'email' => array(
+						'required' => true,
+						'validators' => array(
+								array('name' => 'EmailAddress')
+							),
+				 ),
+				'username' => array(
+						'required' => true
+				 ),
+				'lastname' => array (
+					    'required' => true
+				         )
+				);
 	}
  }
