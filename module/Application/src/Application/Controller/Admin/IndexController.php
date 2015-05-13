@@ -5,6 +5,10 @@ use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\ORM\EntityManager;
 
+use Application\Form\Client\ClientForm;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Application\Entity\User;
+
 
 class IndexController extends AbstractActionController
 {
@@ -25,7 +29,7 @@ class IndexController extends AbstractActionController
 	 *
 	 * @param EntityManager $em
 	 * @access protected
-	 * @return PostController
+	 * 
 	 */
 	protected function setEntityManager(EntityManager $em)
 	{
@@ -52,19 +56,21 @@ class IndexController extends AbstractActionController
 	
 	public function viewUsersAction(){
 	 	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-	 	//$user = new \Application\Entity\User();
-	 	//$user->__set("userName",'NewUser1');
-	 	//$user->__set("password",'NewUser121');
-	 	//$user->__set("firstName",'Nume User1');
-	 	//$user->__set("lastName",'Prenume User1');
-	 	//$user->__set("country",'Romania1 ');
-	 	//$user->__set("city",' Bucuresti1');
-	 	//$user->__set("email",'alandala1');
-	 	//$objectManager->persist($user);
-	 	//$objectManager->flush();
-	 	//$users = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager')->getRepository('\Application\Entity\User')->findAll();
+	 	$user = new \Application\Entity\User();
+	 	/*
+	 	$user->__set("username",'NewUser1');
+	 	$user->__set("password",'NewUser121');
+	 	$user->__set("firstname",'Nume User1');
+	 	$user->__set("lastname",'Prenume User1');
+	 	$user->__set("country",'Romania1 ');
+	 	$user->__set("city",' Bucuresti1');
+	 	$user->__set("email",'alandala1');
+	 	$objectManager->persist($user);
+	 	$objectManager->flush();
+	 	$users = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager')->getRepository('\Application\Entity\User')->findAll(); */
+	 	
 	 	$users = $this->getEntityManager()->getRepository('\Application\Entity\User')->findAll();
-	 	//var_dump($users);
+	 	
 	 	
 	 	$view= new ViewModel(array('users' => $users));
 	 	$view->setTemplate('application/admin/index/viewusers');
@@ -75,5 +81,39 @@ class IndexController extends AbstractActionController
 	 	//$view->setTemplate('application/admin/index/index');
 	 	
 		}
+		public function detailAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			$form = new ClientForm($objectManager);
+			//$client = new User();
+			//$form->bind($client);
 		
+			 
+			if ($this->request->isPost()) {
+				$form->setData($this->request->getPost());
+				if($form->isValid()) {
+					$client = $form->getObject();
+					$objectManager->persist($client);
+					$objectManager->flush();
+					return $this->redirect()->toRoute('admin/index4',
+							     array('controller' => 'index', 'action'=> 'viewusers'));
+				}
+			}
+			else{
+				$id = $this->params()->fromRoute('id');
+				
+				if (isset($id)) {
+					 
+					$client = $objectManager->find('Application\Entity\User', $id);
+					if (!isset($client)) {
+						$this->flashMessenger()->addErrorMessage(sprintf('Could not find client with id %s',$id));
+						return $this->redirect()->toRoute('admin/index4',array('controller' => 'index', 'action'=> 'viewusers'));
+					}
+					$form->bind($client);
+				}
+			}
+			$view= new ViewModel(array('form' => $form));
+			$view->setTemplate('application/client/index/detail');
+			return $view;
+			 
+		}
 	}

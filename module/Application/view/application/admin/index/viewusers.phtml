@@ -7,7 +7,8 @@
 
  </p>
 
- <table class="table">
+ <table class="display" id="example">
+ <thead> 
  <tr>
      <th>First Name</th>
      <th>Last Name</th>
@@ -16,14 +17,20 @@
 	 
      <th>&nbsp;</th>
  </tr>
+ </thead>
+ <tbody>
  <?php foreach ($users as $user) : ?>
  <tr>
-     <td><?php echo $this->escapeHtml($user->firstName);?></td>
-     <td><?php echo $this->escapeHtml($user->lastName);?></td>
+     <td><?php echo $this->escapeHtml($user->firstname);?> </td>
+     <td><?php echo $this->escapeHtml($user->lastname);?></td>
 	 <td><?php echo $this->escapeHtml($user->city);?></td>
 	 <td><?php echo $this->escapeHtml($user->email);?></td>
-     <td>
+  
+      <td>
+        
       
  </tr>
+
  <?php endforeach; ?>
+  </tbody>
  </table>

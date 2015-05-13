@@ -2,19 +2,24 @@
 namespace Application\Form\Client;
 
  use Zend\Form\Form;
-
+ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Doctrine\Common\Persistence\ObjectManager as ObjectManager;
+use Application\Entity\User;
+	
  class ClientForm extends Form
- {
-     public function __construct($name = null)
-     {
-         // we want to ignore the name passed
+ { 
+   public function __construct(ObjectManager $objectManager){
          parent::__construct('client');
          $this->setAttribute('method', 'post');
-		
+         
+         $this->setHydrator(new DoctrineHydrator($objectManager,'Application\Entity\User'))
+              ->setObject(new User());
+        
          $this->add(array(
              'name' => 'id',
              'type' => 'Hidden',
          ));
+         
          $this->add(array(
              'name' => 'username',
              'type' => 'Text',
@@ -22,6 +27,7 @@ namespace Application\Form\Client;
                  'label' => 'User Name',
              ),
          ));
+         
          $this->add(array(
              'name' => 'password',
              'type' => 'Password',
@@ -29,6 +35,7 @@ namespace Application\Form\Client;
                  'label' => 'Password',
              ),
          ));
+         
 		 $this->add(array(
              'name' => 'firstname',
              'type' => 'Text',
@@ -36,6 +43,7 @@ namespace Application\Form\Client;
                  'label' => 'First Name',
              ),
          ));
+		 
 		  $this->add(array(
              'name' => 'lastname',
              'type' => 'Text',
@@ -43,6 +51,7 @@ namespace Application\Form\Client;
                  'label' => 'Last Name',
              ),
          ));
+		  
 		   $this->add(array(
              'name' => 'country',
              'type' => 'Text',
@@ -50,6 +59,7 @@ namespace Application\Form\Client;
                  'label' => 'Country',
              ),
          ));
+		   
 		    $this->add(array(
              'name' => 'email',
              'type' => 'Text',
@@ -57,6 +67,7 @@ namespace Application\Form\Client;
                  'label' => 'E-mail',
              ),
          ));
+		    
 		   $this->add(array(
              'name' => 'city',
              'type' => 'Text',
@@ -64,6 +75,7 @@ namespace Application\Form\Client;
                  'label' => 'City',
              ),
          ));
+		   
          $this->add(array(
              'name' => 'submit',
              'type' => 'Submit',
@@ -72,6 +84,6 @@ namespace Application\Form\Client;
                  'id' => 'submitbutton',
              ),
          ));
-		  
-     }
+        
+	}
  }

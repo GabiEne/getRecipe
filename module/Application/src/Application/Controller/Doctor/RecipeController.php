@@ -13,7 +13,7 @@ class RecipeController extends AbstractActionController
     	$view = new ViewModel(array(
     			'message' => 'Hello world',
     	));
-    	//$view->setTemplate('application/doctor/index/index');
+    	$view->setTemplate('application/doctor/index/index');
     	return $view;
     	
     	//return new ViewModel();

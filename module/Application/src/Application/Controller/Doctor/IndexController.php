@@ -11,7 +11,7 @@ class IndexController extends AbstractActionController
 	public function indexAction()
     {
     	$view = new ViewModel(array(
-    			'message' => 'Hello world',
+    			'message' => 'Hello world'
     	));
     	$view->setTemplate('application/doctor/index/index');
     	return $view;
