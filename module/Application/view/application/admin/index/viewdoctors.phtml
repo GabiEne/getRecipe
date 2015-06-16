@@ -1,0 +1,54 @@
+<?php
+$title = 'Doctors';
+ $this->headTitle($title);
+ ?>
+ <body class = "admin-page">
+ <div class="page-header" role="navigation">
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+
+ <p>
+
+ <a class ="add btn btn-primary" href="<?php echo $this->url('admin/index4',
+              array('controller' => 'index','action'=>'doctorDetail'));?>"> Add Doctor </a>
+
+ </p>
+ <table class="display" id="example">
+ 
+ <thead> 
+ <tr>
+     <th>First Name</th>
+     <th>Last Name</th>
+	 <th>City </th>
+	 <th>E-Mail</th>
+	 
+     <th>&nbsp;</th>
+ </tr>
+ </thead>
+ <tbody>
+
+ <?php foreach ($doctors as $doctor) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($doctor->firstname);?> </td>
+     <td><?php echo $this->escapeHtml($doctor->lastname);?></td>
+	 <td><?php echo $this->escapeHtml($doctor->city);?></td>
+	 <td><?php echo $this->escapeHtml($doctor->email);?></td>
+	 
+	 <td>
+       <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('admin/index4',
+           array('controller' => 'index','action'=>'doctordetail', 'id' => $doctor->id_doctor));?>">Edit Doctor</a>
+    	<form class ="del1" method="post" action="<?php echo $this->url('admin/index4',
+              array('controller' => 'index','action'=>'deleteDoctor','id' => $doctor->id_doctor,));?>" >
+    	 <input class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
+    	 
+     	</form>
+      </td>
+        
+      
+ </tr>
+
+ <?php endforeach; ?>
+  </tbody>
+ </table>
+ </body>

@@ -7,9 +7,11 @@ use Doctrine\ORM\EntityManager;
 
 use Application\Form\Client\ClientForm;
 use Application\Form\Doctor\DoctorForm;
+use Application\Form\Pharmacy\PharmacyForm;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Application\Entity\User;
 use Application\Entity\Doctors;
+use Application\Entity\Pharmacy;
 
 
 class IndexController extends AbstractActionController
@@ -148,8 +150,6 @@ class IndexController extends AbstractActionController
 			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 			$user = new \Application\Entity\Doctors();
 		    $doctors = $this->getEntityManager()->getRepository('\Application\Entity\Doctors')->findAll();
-			 
-			 
 			$view= new ViewModel(array('doctors' => $doctors));
 			$view->setTemplate('application/admin/index/viewdoctors');
 			return $view;
@@ -208,12 +208,52 @@ class IndexController extends AbstractActionController
 		
 				return $this->redirect()->toRoute('admin/index4',array('controller' => 'index', 'action'=> 'viewdoctors'));
 			}
-				
-			//$users = $this->getEntityManager()->getRepository('\Application\Entity\User')->findAll();
-			//$view= new ViewModel(array('users' => $users));
-			//$view->setTemplate('application/admin/index/viewusers');
-			//return $view;
-				
-				
 		}
+		
+	public function viewPharmaciesAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			//$user = new \Application\Entity\Pharmacy();
+			$pharmacies = $this->getEntityManager()->getRepository('\Application\Entity\Pharmacy')->findAll();
+			$view= new ViewModel(array('pharmacies' => $pharmacies));
+			$view->setTemplate('application/admin/index/viewpharmacies');
+			return $view;
+		
+		}
+		public function pharmacyDetailAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			$form = new PharmacyForm($objectManager);
+			//$client = new User();
+			//$form->bind($client);
+			if ($this->request->isPost()) {
+				$form->setData($this->request->getPost());
+				if($form->isValid()) {
+					$pharmacy = $form->getObject();
+					var_dump($pharmacy);
+					$objectManager->persist($pharmacy);
+					$objectManager->flush();
+					return $this->redirect()->toRoute('admin/index4',
+							array('controller' => 'index', 'action'=> 'viewpharmacies'));
+				}
+			}
+			else{
+				$id = $this->params()->fromRoute('id_farmacie');
+		
+				if (isset($id)) {
+		
+					$pharmacy = $objectManager->find('Application\Entity\Pharmacy', $id);
+					if (!isset($pharmacy)) {
+						$this->flashMessenger()->addErrorMessage(sprintf('Could not find client with id %s',$id));
+						return $this->redirect()->toRoute('admin/index4',
+								array ('controller' => 'index',
+										'action'=> 'viewpharmacies')
+						);
+					}
+					$form->bind($pharmacy);
+				}
+			}
+			$view= new ViewModel(array('form' => $form));
+			$view->setTemplate('application/pharmacy/index/detail');
+			return $view;
+			
+      }
 }

@@ -46,16 +46,52 @@
             
         ; ?>
         <script type="text/javascript" class="init">
-
-
-        jQuery(document).ready(function() {
+         jQuery(document).ready(function() {
             jQuery('#example').DataTable();
         } );
-            
-      
+       </script>
+       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+       
+    <script type="text/javascript">
 
+    var map;
+    var geocoder;
+    
+    function initialize() {
+      map = new google.maps.Map(document.getElementById('map-canvas'), {
+        zoom: 12,
+        center: {lat: -34.397, lng: 150.644}
+      });
+      geocoder = new google.maps.Geocoder();
+    }
+    function codeAddress() {
+        var address = document.getElementById("address").value;
+        address += " " +document.getElementById('city').value;
+        address += " " +document.getElementById('street').value;
+        address += " " +document.getElementById('streetnumber').value;
+        geocoder.geocode( { 'address': address}, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location
+            });
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      }
 
-	</script>
+    google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+    <script>
+    
+    document.addEventListener('DOMContentLoaded', function () {
+    	var el =document.getElementById("email");
+        el.addEventListener("click", codeAddress);
+    });
+    
+    </script>
     </head>
     <body>
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -77,11 +113,14 @@
         </nav>
         <div class="container">
             <?php echo $this->content; ?>
+              </div> <!-- /container -->
             <hr>
+            <div>
             <footer>
                 <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
-        </div> <!-- /container -->
+            </div>
+      
         <?php echo $this->inlineScript() ?>
     </body>
 </html>

@@ -100,3 +100,12 @@ div.container a.brand {
 .sign{
 	width: 48%;
 }
+ #map-canvas{
+  height: 480px;
+  float: left;
+  width: 460px;
+}
+#pharmacy{
+	width: 50%; 
+	float:left
+}

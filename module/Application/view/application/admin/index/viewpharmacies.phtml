@@ -1,0 +1,45 @@
+<?php
+$title = 'Pharmacies';
+ $this->headTitle($title);
+ ?>
+ <body class = "admin-page">
+ <div class="page-header" role="navigation">
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+
+ <p>
+
+ <a class ="add btn btn-primary" href="<?php echo $this->url('admin/index4',
+              array('controller' => 'index','action'=>'pharmacyDetail'));?>"> Add Pharmacy </a>
+
+ </p>
+ <table class="display" id="example">
+ 
+ <thead> 
+ <tr>
+     <th>Name</th>
+     <th>City </th>
+	 <th>Street </th>
+	 <th>Website</th>
+	
+ </tr>
+ </thead>
+ <tbody>
+
+ <?php foreach ($pharmacies as $pharmacy) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($pharmacy->name);?> </td>
+     <td><?php echo $this->escapeHtml($pharmacy->city);?></td>
+	 <td><?php echo $this->escapeHtml($pharmacy->street);?></td>
+	 <td><?php echo $this->escapeHtml($pharmacy->website);?></td>
+	 
+	
+        
+      
+ </tr>
+
+ <?php endforeach; ?>
+  </tbody>
+ </table>
+ </body>

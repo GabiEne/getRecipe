@@ -1,0 +1,52 @@
+ <div class="page-header" role="navigation">
+ <?php
+	 $title = 'Add new doctor';
+	 $this->headTitle($title);
+ ?>
+   <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+  <?php $form->prepare();  ?>
+  
+  <?php 
+	  echo $this->form()->openTag($form);
+	  echo $this->formHidden($form->get('id_doctor'));
+	?>
+   <div class="form-group">
+   <?php
+      echo $this->formRow($form->get('id_doctor'));
+	  echo $this->formRow($form->get('username'));
+	  echo $this->formRow($form->get('password'));
+  ?>
+  
+  
+  
+  </div>
+  <div class="form-group">
+  <?php 
+	  echo $this->formRow($form->get('firstname'));
+	  echo $this->formRow($form->get('lastname'));
+  ?>
+  </div>
+  <div class="form-group">
+  <?php 
+	  echo $this->formRow($form->get('country'));
+	  echo $this->formRow($form->get('city'));
+	 
+   ?>
+  </div>
+  <div class="form-group">
+  <?php 
+      echo $this->formRow($form->get('email'));
+	  echo $this->formRow($form->get('adresa_cabinet'));
+	 
+  ?>
+  </div>
+   <div class="form-group">
+  <?php 
+      echo $this->formRow($form->get('specializare'));
+	  echo $this->formSubmit($form->get('submit'));
+	  echo $this->form()->closeTag();
+  ?>
+  </div>
+ 

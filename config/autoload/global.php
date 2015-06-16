@@ -47,7 +47,12 @@
     										         'route' => 'admin/index4',
     										         'controller' => 'index',
     										         'action' =>'viewDoctors',
-    			
+    										         ),
+    										 'Pharmacies' => array(
+    										         		'label' => 'Pharmacies',
+    										         		'route' => 'admin/index4',
+    										         		'controller' => 'index',
+    										         		'action' =>'viewPharmacies',
     	                                 
     											    
     										),
