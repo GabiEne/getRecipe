@@ -27,11 +27,42 @@
  						),
  				),
  		),
+    		
+    		'navigation' => array(
+    				
+    				'default' => array(
+    					
+    						'admin' => array(
+    								'label' => 'Admin',
+    								'route' => 'admin',
+    								'pages' => array(
+    										'users' => array(
+    												'label' => 'users',
+    												'route' => 'admin/index4',
+    												'controller' => 'index',
+    												'action'=>'viewusers',
+    												),
+    										'doctors' => array(
+    										         'label' => 'doctors',
+    										         'route' => 'admin/index4',
+    										         'controller' => 'index',
+    										         'action' =>'viewDoctors',
+    			
+    	                                 
+    											    
+    										),
+    										
+    								),
+    						),
+    				),
+    		),
 
      'service_manager' => array(
          'factories' => array(
              'Zend\Db\Adapter\Adapter'
                      => 'Zend\Db\Adapter\AdapterServiceFactory',
+                'Navigation'
+                		 => 'Zend\Navigation\Service\DefaultNavigationFactory',
          ),
      ),
  );

@@ -1,13 +1,21 @@
 <?php
- $title = 'Users';
+$title = 'Users';
  $this->headTitle($title);
  ?>
+ <body class = "admin-page">
+ <div class="page-header" role="navigation">
  <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+
  <p>
 
- </p>
+ <a class ="add btn btn-primary" href="<?php echo $this->url('admin/index4',
+              array('controller' => 'index','action'=>'detail'));?>"> Add User </a>
 
+ </p>
  <table class="display" id="example">
+ 
  <thead> 
  <tr>
      <th>First Name</th>
@@ -19,6 +27,7 @@
  </tr>
  </thead>
  <tbody>
+
  <?php foreach ($users as $user) : ?>
  <tr>
      <td><?php echo $this->escapeHtml($user->firstname);?> </td>
@@ -26,8 +35,13 @@
 	 <td><?php echo $this->escapeHtml($user->city);?></td>
 	 <td><?php echo $this->escapeHtml($user->email);?></td>
 	 <td>
-    	 <a href="<?php echo $this->url('admin/index4',
-           array('controller' => 'index','action'=>'detail', 'id' => $user->id));?>">Edit</a>
+       <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('admin/index4',
+           array('controller' => 'index','action'=>'detail', 'id' => $user->id));?>">Edit User</a>
+    	<form class ="del1" method="post" action="<?php echo $this->url('admin/index4',
+              array('controller' => 'index','action'=>'delete','id' => $user->id,));?>" >
+    	 <input class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
+    	 
+     	</form>
       </td>
         
       
@@ -36,3 +50,4 @@
  <?php endforeach; ?>
   </tbody>
  </table>
+ </body>

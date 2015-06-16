@@ -13,7 +13,7 @@ use Zend\Validator\ValidatorInterface;
    public function __construct(ObjectManager $objectManager){
          parent::__construct('client');
          $this->setAttribute('method', 'post');
-         
+         $this->setAttribute('class', 'form-vertical');
          $this->setHydrator(new DoctrineHydrator($objectManager,'Application\Entity\User'))
               ->setObject(new User());
         
@@ -27,7 +27,11 @@ use Zend\Validator\ValidatorInterface;
              'type' => 'Text',
              'options' => array(
                  'label' => 'User Name',
-             ),
+                ),
+         	  'attributes' => array(
+         			'class' => 'form-control',
+         	  		'placeholder' => 'Choose a username',
+         		),
          ));
          
          $this->add(array(
@@ -36,6 +40,10 @@ use Zend\Validator\ValidatorInterface;
              'options' => array(
                  'label' => 'Password',
              ),
+         	 'attributes' => array(
+         				'class' => 'form-control',
+         	 		    'placeholder' => 'Enter your password',
+         		),
          ));
          
 		 $this->add(array(
@@ -44,6 +52,10 @@ use Zend\Validator\ValidatorInterface;
              'options' => array(
                  'label' => 'First Name',
              ),
+		 	 'attributes' => array(
+		 				'class' => 'form-control',
+		 	 		    'placeholder' => 'Your Firstname',
+		 		),
          ));
 		 
 		  $this->add(array(
@@ -52,6 +64,9 @@ use Zend\Validator\ValidatorInterface;
              'options' => array(
                  'label' => 'Last Name',
              ),
+		  	 'attributes' => array(
+		  				'class' => 'form-control',
+		  		),
          ));
 		  
 		   $this->add(array(
@@ -60,6 +75,9 @@ use Zend\Validator\ValidatorInterface;
              'options' => array(
                  'label' => 'Country',
              ),
+		   	'attributes' => array(
+		   		 'class' => 'form-control',
+		   		),
          ));
 		   
 		    $this->add(array(
@@ -68,6 +86,9 @@ use Zend\Validator\ValidatorInterface;
              'options' => array(
                  'label' => 'E-mail',
              ),
+		      'attributes' => array(
+		    	 'class' => 'form-control',
+		    		),
 		    
          ));
 		    
@@ -77,14 +98,18 @@ use Zend\Validator\ValidatorInterface;
              'options' => array(
                  'label' => 'City',
              ),
+		   	'attributes' => array(
+		   		'class' => 'form-control',
+		   	 ),
          ));
 		   
          $this->add(array(
              'name' => 'submit',
              'type' => 'Submit',
              'attributes' => array(
-                 'value' => 'Go',
+                 'value' => 'Sign up',
                  'id' => 'submitbutton',
+             	  'class' => 'sign btn btn-primary',
              ),
          ));
         

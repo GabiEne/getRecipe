@@ -6,8 +6,10 @@ use Zend\View\Model\ViewModel;
 use Doctrine\ORM\EntityManager;
 
 use Application\Form\Client\ClientForm;
+use Application\Form\Doctor\DoctorForm;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Application\Entity\User;
+use Application\Entity\Doctors;
 
 
 class IndexController extends AbstractActionController
@@ -81,13 +83,12 @@ class IndexController extends AbstractActionController
 	 	//$view->setTemplate('application/admin/index/index');
 	 	
 		}
-		public function detailAction(){
+		
+	public function detailAction(){
 			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 			$form = new ClientForm($objectManager);
 			//$client = new User();
 			//$form->bind($client);
-		
-			 
 			if ($this->request->isPost()) {
 				$form->setData($this->request->getPost());
 				if($form->isValid()) {
@@ -106,14 +107,113 @@ class IndexController extends AbstractActionController
 					$client = $objectManager->find('Application\Entity\User', $id);
 					if (!isset($client)) {
 						$this->flashMessenger()->addErrorMessage(sprintf('Could not find client with id %s',$id));
-						return $this->redirect()->toRoute('admin/index4',array('controller' => 'index', 'action'=> 'viewusers'));
+						return $this->redirect()->toRoute('admin/index4',
+								                  array ('controller' => 'index',
+								                  	    'action'=> 'viewusers')
+								                  );
 					}
 					$form->bind($client);
 				}
 			}
+			
 			$view= new ViewModel(array('form' => $form));
 			$view->setTemplate('application/client/index/detail');
 			return $view;
 			 
 		}
-	}
+		
+	public function deleteAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			$id = (int) $this->params()->fromRoute('id');
+			$client = $objectManager->find('Application\Entity\User', $id);
+			var_dump($this->request->isPost());
+		
+			if ($this->request->isPost()) {
+				
+				$objectManager->remove($client);
+				$objectManager->flush();
+		
+				return $this->redirect()->toRoute('admin/index4',array('controller' => 'index', 'action'=> 'viewusers'));
+			}
+			
+			//$users = $this->getEntityManager()->getRepository('\Application\Entity\User')->findAll();
+			//$view= new ViewModel(array('users' => $users));
+			//$view->setTemplate('application/admin/index/viewusers');
+			//return $view;
+			
+			
+		}
+		
+	public function viewDoctorsAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			$user = new \Application\Entity\Doctors();
+		    $doctors = $this->getEntityManager()->getRepository('\Application\Entity\Doctors')->findAll();
+			 
+			 
+			$view= new ViewModel(array('doctors' => $doctors));
+			$view->setTemplate('application/admin/index/viewdoctors');
+			return $view;
+
+		}
+		
+	public function doctorDetailAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			$form = new DoctorForm($objectManager);
+			//$client = new User();
+			//$form->bind($client);
+			if ($this->request->isPost()) {
+				$form->setData($this->request->getPost());
+				if($form->isValid()) {
+					$doctor = $form->getObject();
+					$objectManager->persist($doctor);
+					$objectManager->flush();
+					return $this->redirect()->toRoute('admin/index4',
+							array('controller' => 'index', 'action'=> 'viewdoctors'));
+				}
+			}
+			else{
+				$id = $this->params()->fromRoute('id');
+		
+				if (isset($id)) {
+		
+					$doctor = $objectManager->find('Application\Entity\Doctors', $id);
+					if (!isset($doctor)) {
+						$this->flashMessenger()->addErrorMessage(sprintf('Could not find client with id %s',$id));
+						return $this->redirect()->toRoute('admin/index4',
+								array ('controller' => 'index',
+										'action'=> 'viewdoctors')
+						);
+					}
+					$form->bind($doctor);
+				}
+			}
+				
+			$view= new ViewModel(array('form' => $form));
+			$view->setTemplate('application/doctor/index/detail');
+			return $view;
+		
+		}
+		
+	public function deleteDoctorAction(){
+			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+			$id = (int) $this->params()->fromRoute('id');
+			var_dump((int) $this->params()->fromRoute('id'));
+			$doctor= $objectManager->find('Application\Entity\Doctors', $id);
+			var_dump($this->request->isPost());
+		
+			if ($this->request->isPost()) {
+		
+				$objectManager->remove($doctor);
+				$objectManager->flush();
+		
+				return $this->redirect()->toRoute('admin/index4',array('controller' => 'index', 'action'=> 'viewdoctors'));
+			}
+				
+			//$users = $this->getEntityManager()->getRepository('\Application\Entity\User')->findAll();
+			//$view= new ViewModel(array('users' => $users));
+			//$view->setTemplate('application/admin/index/viewusers');
+			//return $view;
+				
+				
+		}
+}
