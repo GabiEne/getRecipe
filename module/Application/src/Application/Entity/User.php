@@ -2,6 +2,10 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Application\Entity\UserProfile;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\OneToOne;
+
 
 /** @ORM\Entity
  * @ORM\Table(name="clients")
@@ -18,20 +22,31 @@ class User{
 	
 	protected $id; 
 	
-	public function getId(){
-		return $this->id; 
-		
-	}
+
 	
-	public function setId($id){
-		$this->id =$id;
+	
+	 
+	
+	 /**
+	  * @ORM\OneToOne(targetEntity="Application\Entity\UserProfile", mappedBy="id_profil", cascade={"persist"})
+	  */
+	
+
+
+	 public function getId(){
+	 	return $this->id;
+	 
 	 }
 	 
-	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
 	 
+	 public function setId($id){
+	 	$this->id =$id;
+	 }
+	
+	 /**
+	  * @ORM\Column(type= "string",length=30)
+	  *
+	  */
 	protected $username;
 	
 	public function getUsername(){

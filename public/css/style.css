@@ -1,21 +1,4 @@
-@font-face {
-    font-family: 'OpenSans-Regular';
-    src: url('../fonts/OpenSans-Regular.eot');
-    src: url('../fonts/OpenSans-Regular.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/OpenSans-Regular.woff') format('woff'),
-         url('../fonts/OpenSans-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'AlteHaasGroteskRegular';
-    src: url('../fonts/AlteHaasGroteskRegular.eot');
-    src: url('../fonts/AlteHaasGroteskRegular.eot?#iefix') format('embedded-opentype'),
-         url('../fonts/AlteHaasGroteskRegular.woff') format('woff'),
-         url('../fonts/AlteHaasGroteskRegular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-}
+
 body {
     padding-top: 60px;
     padding-bottom: 40px;
@@ -51,7 +34,7 @@ body {
 div.container a.brand {
     background: url("../img/zf2-logo.png") no-repeat scroll 0 10px transparent;
     margin-left: 0;
-    padding: 8px 20px 12px 40px;
+    
 }
 .form-vertical .input-group label{
 	padding-left:100px;
@@ -104,8 +87,23 @@ div.container a.brand {
   height: 480px;
   float: left;
   width: 460px;
+  
 }
 #pharmacy{
 	width: 50%; 
-	float:left
+	float:left;
+	padding-right:30px;
+}
+#address, #city, #street, #streetnumber,#email{
+	width: 95%;
+}
+.emaildoc{
+ 
+	width: 60%; 
+	margin: 0 auto;
+	margin-top: 3%;
+}
+.inputdoc, .invitation {
+	width: 100%;
+	
 }

@@ -1,1 +1,17 @@
+
+<div>
+
+
+
+
+
+
+
+
+
+</div>
 <h1>View from Client</h1>
+<div> Hello <?php  echo $user->getFirstname() . " " . $user->getLastname() ."!";?>
+ <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
+           array('controller' => 'index','action'=>'createprofile', 'id'=>$id));?>"> Add you address</a>
+</div>

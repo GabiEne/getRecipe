@@ -1,0 +1,20 @@
+<div class='panel panel-danger emaildoc'>
+<div class='panel-heading'>
+<h3 class='panel-title'> Doctor not found. Type your doctor's email address and we will sent him an invitation!</h3>
+</div>
+
+
+	<?php $form->prepare();  ?>
+  <div>
+  	<?php 
+	  echo $this->form()->openTag($form);
+	  echo $this->formRow($form->get('doctoremail'));
+	
+	?>
+   </div>
+	   <?php 
+	  echo $this->formSubmit($form->get('submitemail'));
+	  echo $this->form()->closeTag();
+     ?>
+     
+</div>

@@ -74,8 +74,6 @@ class IndexController extends AbstractActionController
 	 	$users = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager')->getRepository('\Application\Entity\User')->findAll(); */
 	 	
 	 	$users = $this->getEntityManager()->getRepository('\Application\Entity\User')->findAll();
-	 	
-	 	
 	 	$view= new ViewModel(array('users' => $users));
 	 	$view->setTemplate('application/admin/index/viewusers');
 	 	return $view;
@@ -219,7 +217,7 @@ class IndexController extends AbstractActionController
 			return $view;
 		
 		}
-		public function pharmacyDetailAction(){
+	public function pharmacyDetailAction(){
 			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 			$form = new PharmacyForm($objectManager);
 			//$client = new User();

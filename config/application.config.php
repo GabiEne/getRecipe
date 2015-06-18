@@ -5,6 +5,8 @@ return array(
         'Application',
     	'DoctrineModule',
     	'DoctrineORMModule',
+         'AcMailer',
+    		
     	
 		//'User',
 		//'Helloworld',
