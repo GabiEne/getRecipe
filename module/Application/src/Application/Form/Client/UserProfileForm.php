@@ -30,7 +30,28 @@ use Zend\Validator\ValidatorInterface;
                 ),
          	  'attributes' => array(
          			'class' => 'form-control',
+         	  		'id' =>'address',
          	  		'placeholder' => 'Type you address',
+         		),
+         ));
+         $this->add(array(
+         		'name' => 'longitude',
+         		'type' => 'Text',
+         		'options' => array(
+         				'label' => 'Longitude',
+         		),
+         		'attributes' => array(
+         				'class' => 'form-control',
+         		),
+         ));
+         $this->add(array(
+         		'name' => 'latitude',
+         		'type' => 'Text',
+         		'options' => array(
+         				'label' => 'Latitude',
+         		),
+         		'attributes' => array(
+         				'class' => 'form-control',
          		),
          ));
          $this->add(array(

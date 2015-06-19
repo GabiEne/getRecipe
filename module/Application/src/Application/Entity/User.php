@@ -101,33 +101,6 @@ class User{
 	}
 	
 	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
-	
-	protected $country;
-	
-	public function getCountry(){
-		return $this->country;
-	
-	}
-	public function setCountry($country){
-		$this->country =$country;
-	}
-	
-	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
-	protected $city;
-	
-	public function getCity(){
-		return $this->city;
-	
-	}
-	public function setCity($city){
-		$this->city =$city;
-	}
 	
 	/**
 	 * @ORM\Column(type= "string")

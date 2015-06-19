@@ -64,58 +64,45 @@ class Pharmacy{
 	 *
 	 */
 
-	protected $country;
+	protected $address;
 
-	public function getCountry(){
-		return $this->country;
+	public function getAddress(){
+		return $this->address;
 
 	}
-	public function setCountry($country){
-		$this->country =$country;
+	public function setAddress($address){
+		$this->address =$address;
 	}
 
 	/**
-	 * @ORM\Column(type= "string")
+	 * @ORM\Column(type= "float")
 	 *
 	 */
-	protected $city;
+	protected $longitude;
 
-	public function getCity(){
-		return $this->city;
+	public function getLongitude(){
+		return $this->longitude;
 
 	}
-	public function setCity($city){
-		$this->city =$city;
+	public function setLongitude($longitude){
+		$this->longitude =$longitude;
 	}
 
 
 	/**
-	 * @ORM\Column(type= "string")
+	 * @ORM\Column(type= "float")
 	 *
 	 */
-	protected $street;
+	protected $latitude;
 
-	public function getStreet(){
-		return $this->street;
-
-	}
-	public function setStreet($street){
-		$this->street =$street;
-	}
-	
-	
-	/**
-	 * @ORM\Column(type= "integer")
-	 *
-	 */
-	protected $streetnumber;
-
-	public function getStreetNumbere(){
-		return $this->streetnumber;
+	public function geLatitude(){
+		return $this->latitude;
 
 	}
-	public function setStreetNumber($streetnumber){
-		$this->streetnumber =$streetnumber;
+	public function setLatitude($latitude){
+		
+		$this->latitude =$latitude;
+		
 	}
 	
 	/**

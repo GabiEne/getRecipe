@@ -69,16 +69,7 @@ use Zend\Validator\ValidatorInterface;
 		  		),
          ));
 		  
-		   $this->add(array(
-             'name' => 'country',
-             'type' => 'Text',
-             'options' => array(
-                 'label' => 'Country',
-             ),
-		   	'attributes' => array(
-		   		 'class' => 'form-control',
-		   		),
-         ));
+		
 		   
 		    $this->add(array(
              'name' => 'email',
@@ -92,16 +83,7 @@ use Zend\Validator\ValidatorInterface;
 		    
          ));
 		    
-		   $this->add(array(
-             'name' => 'city',
-             'type' => 'Text',
-             'options' => array(
-                 'label' => 'City',
-             ),
-		   	'attributes' => array(
-		   		'class' => 'form-control',
-		   	 ),
-         ));
+		 
 		   
          $this->add(array(
              'name' => 'submit',

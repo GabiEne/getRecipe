@@ -138,7 +138,36 @@ public function getUser()
 	public function getDoctor()
 	{
 		return $this->doctor;
+	}	
+	/**
+	 * @ORM\Column(type= "float")
+	 *
+	 */
+	protected $longitude;
+	
+	public function getLongitude(){
+		return $this->longitude;
+	
+	}
+	public function setLongitude($longitude){
+		$this->longitude =$longitude;
 	}
 	
+	
+	/**
+	 * @ORM\Column(type= "float")
+	 *
+	 */
+	protected $latitude;
+	
+	public function geLatitude(){
+		return $this->latitude;
+	
+	}
+	public function setLatitude($latitude){
+	
+		$this->latitude =$latitude;
+	
+	}
 	
 }

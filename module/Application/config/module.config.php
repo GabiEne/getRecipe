@@ -15,7 +15,8 @@ return array(
 						'Doctor\Recipe' => 'Application\Controller\Doctor\RecipeController',
 						'Pharmacy\Index' => 'Application\Controller\Pharmacy\IndexController',
 						'Admin\Index' => 'Application\Controller\Admin\IndexController',
-						'Admin\Auth' => 'Application\Controller\Admin\AuthController'
+						'Admin\Auth' => 'Application\Controller\Admin\AuthController',
+						'Home' => 'Application\Controller\HomeController',
  						
 				),
 			
@@ -134,10 +135,10 @@ return array(
         			
             	'home' => array(
                 	'type' => 'Zend\Mvc\Router\Http\Literal',
-                 	'options' => array(
+                 	 'options' => array(
 	                    'route'    => '/',
 	                     'defaults' => array(
-	                        'controller' => 'Index',
+	                        'controller' => 'Home',
 	                        'action'     => 'index',
 	                    ),
 	                ),

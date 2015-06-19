@@ -49,10 +49,10 @@ use Zend\Validator\ValidatorInterface;
     
 		  
 		   $this->add(array(
-             'name' => 'country',
+             'name' => 'address',
              'type' => 'Text',
              'options' => array(
-                 'label' => 'Country',
+                 'label' => 'Address',
              ),
 		   	'attributes' => array(
 		   		 'class' => 'form-control',
@@ -62,43 +62,32 @@ use Zend\Validator\ValidatorInterface;
 		   
 		
 		    
-		   $this->add(array(
-             'name' => 'city',
-             'type' => 'Text',
-             'options' => array(
-                 'label' => 'City',
-             ),
-		   	'attributes' => array(
-		   		'class' => 'form-control',
-		   		'id' =>'city',
-		   			
-		   	 ),
-         ));
+		  
 		   
 		
 		   
 		   $this->add(array(
-		   		'name' => 'street',
+		   		'name' => 'longitude',
 		   		'type' => 'Text',
 		   		'options' => array(
-		   				'label' => 'Street',
+		   				'label' => 'Longitude',
 		   		),
 		   		'attributes' => array(
 		   				'class' => 'form-control',
-		   				'id' =>'street'
+		   				'id' =>'Longitude'
 		   		),
 		   ));
 		
 		   
 		   $this->add(array(
-		   		'name' => 'streetnumber',
+		   		'name' => 'latitude',
 		   		'type' => 'Text',
 		   		'options' => array(
-		   				'label' => 'Street Number',
+		   				'label' => 'Latitude',
 		   		),
 		   		'attributes' => array(
 		   				'class' => 'form-control',
-		   				'id'=>'streetnumber',
+		   				'id'=>'Latitude',
 		   		),
 		   ));
 		   

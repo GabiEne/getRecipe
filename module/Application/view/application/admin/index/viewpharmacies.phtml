@@ -19,8 +19,8 @@ $title = 'Pharmacies';
  <thead> 
  <tr>
      <th>Name</th>
-     <th>City </th>
-	 <th>Street </th>
+     <th>Address</th>
+	
 	 <th>Website</th>
 	
  </tr>
@@ -30,8 +30,8 @@ $title = 'Pharmacies';
  <?php foreach ($pharmacies as $pharmacy) : ?>
  <tr>
      <td><?php echo $this->escapeHtml($pharmacy->name);?> </td>
-     <td><?php echo $this->escapeHtml($pharmacy->city);?></td>
-	 <td><?php echo $this->escapeHtml($pharmacy->street);?></td>
+     <td><?php echo $this->escapeHtml($pharmacy->address);?></td>
+	
 	 <td><?php echo $this->escapeHtml($pharmacy->website);?></td>
 	 
 	
