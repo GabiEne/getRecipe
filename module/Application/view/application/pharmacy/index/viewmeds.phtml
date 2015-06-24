@@ -1,0 +1,48 @@
+<?php
+$title = 'Meds';
+$this->headTitle($title);
+ ?>
+ <body class = "admin-page">
+ <div class="page-header" role="navigation">
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+
+ <p>
+
+ <a class ="add btn btn-primary" href="<?php echo $this->url('pharmacy/index2',
+              array('controller' => 'index','action'=>'addmeds','idpharma' => $id));?>"> Add Medicine </a>
+
+ </p>
+ <table class="display" id="example">
+ 
+ <thead> 
+ <tr>
+     <th>Name</th>
+     <th>Price</th>
+ </tr>
+ </thead>
+ <tbody>
+
+ <?php foreach ($drugs as $drug) : ?>
+ <tr>
+     <td><?php echo $this->escapeHtml($drug->name);?> </td>
+     <td><?php echo $this->escapeHtml($drug->price);?></td>
+
+	 <td>
+       <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('pharmacy/index2',
+           array('controller' => 'index','action'=>'editmed', 'id' => $drug->id, 'idpharma'=>$id));?>">Edit Medicine</a>
+    	<form class ="del1" method="post" action="<?php echo $this->url('pharmacy/index2',
+              array('controller' => 'index','action'=>'delete','id' => $drug->id,));?>" >
+    	 <input class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
+    	 
+     	</form>
+      </td>
+        
+      
+ </tr>
+
+ <?php endforeach; ?>
+  </tbody>
+ </table>
+ </body>

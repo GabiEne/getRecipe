@@ -32,6 +32,8 @@ namespace Application\Controller\Client;
      	 return new ViewModel();
 	 
      }
+     
+     
      public function welcomeAction(){
      	
      	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -180,16 +182,15 @@ namespace Application\Controller\Client;
      			array('user' => $id));
      	$userLongitude = $user->getLongitude();
      	$userLatitude = $user->getLatitude();
-     	$milesradius = 10;
-     	$units = 6371;
+     	
         $pharmacyTable = $objectManager->getRepository('\Application\Entity\Pharmacy');
      	
-     	$pharmacies = $objectManager->getRepository('\Application\Entity\Pharmacy')->findAll();
+     	
         $pharmacy = new \Application\Entity\Pharmacy();
         $userLongitude1 = $userLongitude - 0.1;
         $userLongitude2 = $userLongitude +0.1;
-        $userLatitude1 = $userLatitude -0.1;
-        $userLatitude2 = $userLatitude + 0.1;
+        $userLatitude1  =  $userLatitude -0.1;
+        $userLatitude2  =  $userLatitude + 0.1;
         
      	 $qb= $objectManager
      	->createQueryBuilder()
