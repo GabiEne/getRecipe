@@ -160,7 +160,7 @@ public function getUser()
 	 */
 	protected $latitude;
 	
-	public function geLatitude(){
+	public function getLatitude(){
 		return $this->latitude;
 	
 	}

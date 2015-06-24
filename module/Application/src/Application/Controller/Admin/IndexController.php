@@ -4,7 +4,6 @@ namespace Application\Controller\Admin;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use Doctrine\ORM\EntityManager;
-
 use Application\Form\Client\ClientForm;
 use Application\Form\Doctor\DoctorForm;
 use Application\Form\Pharmacy\PharmacyForm;
@@ -146,7 +145,7 @@ class IndexController extends AbstractActionController
 		
 	public function viewDoctorsAction(){
 			$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-			$user = new \Application\Entity\Doctors();
+			
 		    $doctors = $this->getEntityManager()->getRepository('\Application\Entity\Doctors')->findAll();
 			$view= new ViewModel(array('doctors' => $doctors));
 			$view->setTemplate('application/admin/index/viewdoctors');
@@ -234,7 +233,7 @@ class IndexController extends AbstractActionController
 				}
 			}
 			else{
-				$id = $this->params()->fromRoute('id_farmacie');
+				$id = $this->params()->fromRoute('id');
 		
 				if (isset($id)) {
 		

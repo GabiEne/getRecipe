@@ -14,4 +14,6 @@
 <div> Hello <?php  echo $user->getFirstname() . " " . $user->getLastname() ."!";?>
  <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
            array('controller' => 'index','action'=>'createprofile', 'id'=>$id));?>"> Add you address</a>
+           <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
+           array('controller' => 'index','action'=>'viewprofile', 'id'=>$id));?>"> View Your profile</a>
 </div>

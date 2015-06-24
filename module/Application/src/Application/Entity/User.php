@@ -116,10 +116,6 @@ class User{
 		$this->email =$email;
 	}
 	
-	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
 
  	public function __get($property){
  		

@@ -19,7 +19,7 @@ use Zend\Validator\ValidatorInterface;
               ->setObject(new Pharmacy());
         
          $this->add(array(
-             'name' => 'id_farmacie',
+             'name' => 'id',
              'type' => 'Hidden',
          ));
          

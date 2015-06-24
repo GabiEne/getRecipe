@@ -10,6 +10,7 @@
 namespace Application;
 
 use Zend\Mvc\ModuleRouteListener;
+use Zend\Authentication\AuthenticationService;
 use Zend\Mvc\MvcEvent;
 
 class Module
@@ -24,7 +25,21 @@ class Module
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+        return array(
+        		'factories' => array(
+        				'Zend\Authentication\AuthenticationService' => function($serviceManager) {
+        					// If you are using DoctrineORMModule:
+        					return $serviceManager->get('doctrine.authenticationservice.orm_default');
+        
+        					// If you are using DoctrineODMModule:
+        					//return $serviceManager->get('doctrine.authenticationservice.odm_default');
+        				}
+              )
+        				
+        );
     }
+				
+    
 
     public function getAutoloaderConfig()
     {

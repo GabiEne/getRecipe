@@ -3,6 +3,9 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Application\Entity\Drugs;
+use Doctrine\ORM\Mapping\Table;
+use Doctrine\ORM\Mapping\ManyToMany;
 
 /** @ORM\Entity
  * @ORM\Table(name="pharmacy")
@@ -17,15 +20,15 @@ class Pharmacy{
 	* @ORM\Column(type="integer")
 	*/
 
-	protected $id_farmacie;
+	protected $id;
 
-	public function getId_Farmacie(){
-		return $this->id_farmacie;
+	public function getId(){
+		return $this->id;
 
 	}
 
-	public function setId_Farmacie($id_farmacie){
-		$this->id_farmacie =$id_farmacie;
+	public function setId($id){
+		$this->id =$id;
 	}
 
 	/**
@@ -133,6 +136,28 @@ class Pharmacy{
 		$this->website =$website;
 	
 	}
+	
+	/**
+	 *@var@ORM\Doctrine\Common\Collections\ArrayCollection
+	 *@ORM\ManyToMany(targetEntity="Drugs", inversedBy="pharmacy")
+	 *@ORM\JoinTable(name="pharmacy_drugs")
+	 **/
+	private $drugs;
+	
+	public function __construct() {
+		$this->drugs = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+	
+	/**
+	 * Get drugs
+	 *
+	 * @return PdDrugs
+	 */
+	public function getDrugs()
+	{
+		return $this->drugs;
+	}
+	
 	
 
 	public function __get($property){

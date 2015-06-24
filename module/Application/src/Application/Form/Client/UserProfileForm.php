@@ -39,9 +39,11 @@ use Zend\Validator\ValidatorInterface;
          		'type' => 'Text',
          		'options' => array(
          				'label' => 'Longitude',
+         				
          		),
          		'attributes' => array(
          				'class' => 'form-control',
+         				'id'=> 'Longitude',
          		),
          ));
          $this->add(array(
@@ -52,6 +54,7 @@ use Zend\Validator\ValidatorInterface;
          		),
          		'attributes' => array(
          				'class' => 'form-control',
+         				'id'=> 'Latitude',
          		),
          ));
          $this->add(array(
