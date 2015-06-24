@@ -18,7 +18,7 @@ use Zend\Validator\ValidatorInterface;
               ->setObject(new Doctors());
         
          $this->add(array(
-             'name' => 'id_doctor',
+             'name' => 'id',
              'type' => 'Hidden',
          ));
          
@@ -103,6 +103,15 @@ use Zend\Validator\ValidatorInterface;
 		   				'class' => 'form-control',
 		   		),
 		   
+		   ));
+		   $this->add(array(
+		   		'name' => 'type',
+		   		'type' => 'hidden',
+		   		
+		   		'attributes' => array(
+		   				'value' => '2',
+		   		),
+		   		 
 		   ));
 		   
 		   $this->add(array(

@@ -11,6 +11,12 @@
 					<h2>Get Prescription!</h2>
 					<p>See your doctor's recomandation, find meds and place your order to the nearst pharmacy!</p>
 					<a href="<?php echo $this->url('client/index3', array('controller' => 'index', 'action' => 'detail'));?>"class="cd-btn">Register Now!</a>
+				 <div>   <?php // view helper
+    if ($user = $this->identity()) {
+        echo 'Logged in as ' . $this->escapeHtml($user->getUsername());
+        }
+?>		
+</div>
 				</div> <!-- .cd-full-width -->
 			</li>
 

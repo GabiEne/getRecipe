@@ -156,10 +156,10 @@ return array(
        		'orm_default' => array(
        				'object_manager' => 'Doctrine\ORM\EntityManager',
        				// object_repository can be used instead of the object_manager key
-       				'identity_class' => 'Application\Entity\User', //'Application\Entity\User',
+       				'identity_class' => 'Application\Entity\Account', //'Application\Entity\User',
        				'identity_property' => 'username', // 'username', // 'email',
        				'credential_property' => 'password', // 'password',
-       				'credential_callable' => function(Application\Entity\User $user, $passwordGiven) { // not only User
+       				'credential_callable' => function(Application\Entity\Account $user, $passwordGiven) { // not only User
        				// return my_awesome_check_test($user->getPassword(), $passwordGiven);
        		// echo '<h1>callback user->getPassword = ' .$user->getPassword() . ' passwordGiven = ' . $passwordGiven . '</h1>';
        		//- if ($user->getPassword() == md5($passwordGiven)) { // original

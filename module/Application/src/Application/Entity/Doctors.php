@@ -2,60 +2,15 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Application\Entity\Account;
 
 /** @ORM\Entity
  * @ORM\Table(name="doctors")
  * 
  *  
  */
-class Doctors{
-	/**
-	
-	 * @ORM\Id
-	 * @ORM\GeneratedValue(strategy = "AUTO")
-	 * @ORM\Column(type="integer")
-	 */
-	
-	protected $id_doctor; 
-	
-	public function getId_Doctor(){
-		return $this->id_doctor; 
-		
-	}
-	
-	public function setId_Doctor($id_doctor){
-		$this->id_doctor =$id_doctor;
-	 }
-	 
-	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
-	 
-	protected $username;
-	
-	public function getUsername(){
-		return $this->username;
-	
-	}
-	
-	public function setUsername($username){
-		$this->username =$username;
-	}
-	
-	/**
-	 * @ORM\Column(type= "string",length=30)
-	 *
-	 */
-	protected   $password;
-	
-	public function getPassword(){
-		return $this->password;
-	
-	}
-	public function setPassword($password){
-		$this->password =$password;
-	}
+class Doctors extends Account {
+
 	
 	/**
 	 * @ORM\Column(type= "string")
@@ -114,19 +69,7 @@ class Doctors{
 		$this->city =$city;
 	}
 	
-	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
-	protected $email;
-	
-	public function getEmail(){
-		return $this->email;
-	
-	}
-	public function setEmail($email){
-		$this->email =$email;
-	}
+
 	/**
 	 * @ORM\Column(type= "string")
 	 *

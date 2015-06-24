@@ -109,9 +109,9 @@ public function getUser()
 	/**
 	 * @var Doctors
 	 *
-	 * @ORM\ManyToOne(targetEntity="Doctors")
-	 *@ORM\JoinColumns({
-	 *  @ORM\JoinColumn(name="id_doctor", referencedColumnName="id_doctor")
+	 *  @ORM\ManyToOne(targetEntity="Doctors")
+	 *  @ORM\JoinColumns({
+	 *  @ORM\JoinColumn(name="id_doctor", referencedColumnName="id")
 	 * })
 	 */
 	private $doctor;

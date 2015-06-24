@@ -83,10 +83,10 @@ class User extends \Application\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'id', 'username', 'password', 'firstname', 'lastname', 'email');
+            return array('__isInitialized__', 'firstname', 'lastname', 'id', 'username', 'password', 'email', 'type', 'isActive');
         }
 
-        return array('__isInitialized__', 'id', 'username', 'password', 'firstname', 'lastname', 'email');
+        return array('__isInitialized__', 'firstname', 'lastname', 'id', 'username', 'password', 'email', 'type', 'isActive');
     }
 
     /**
@@ -195,6 +195,50 @@ class User extends \Application\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
+    public function getFirstname()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstname', array());
+
+        return parent::getFirstname();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setFirstname($firstname)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstname', array($firstname));
+
+        return parent::setFirstname($firstname);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getLastname()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastname', array());
+
+        return parent::getLastname();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setLastname($lastname)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastname', array($lastname));
+
+        return parent::setLastname($lastname);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getId()
     {
 
@@ -261,50 +305,6 @@ class User extends \Application\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     /**
      * {@inheritDoc}
      */
-    public function getFirstname()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstname', array());
-
-        return parent::getFirstname();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setFirstname($firstname)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstname', array($firstname));
-
-        return parent::setFirstname($firstname);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getLastname()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastname', array());
-
-        return parent::getLastname();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setLastname($lastname)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastname', array($lastname));
-
-        return parent::setLastname($lastname);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getEmail()
     {
 
@@ -322,6 +322,50 @@ class User extends \Application\Entity\User implements \Doctrine\ORM\Proxy\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
 
         return parent::setEmail($email);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getType()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getType', array());
+
+        return parent::getType();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setType($type)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setType', array($type));
+
+        return parent::setType($type);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getisActive()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getisActive', array());
+
+        return parent::getisActive();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setisActive($isActive)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setisActive', array($isActive));
+
+        return parent::setisActive($isActive);
     }
 
 }

@@ -153,3 +153,6 @@ margin-top: 8px;
 .cd-hero-slider .cd-btn {
   background-color: rgba(31, 111, 18, 0.9)!important;
 }
+.navbar-brand img{
+	width:100px;
+}

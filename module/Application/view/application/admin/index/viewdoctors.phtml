@@ -37,9 +37,9 @@ $title = 'Doctors';
 	 
 	 <td>
        <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('admin/index4',
-           array('controller' => 'index','action'=>'doctordetail', 'id' => $doctor->id_doctor));?>">Edit Doctor</a>
+           array('controller' => 'index','action'=>'doctordetail', 'id' => $doctor->id));?>">Edit Doctor</a>
     	<form class ="del1" method="post" action="<?php echo $this->url('admin/index4',
-              array('controller' => 'index','action'=>'deleteDoctor','id' => $doctor->id_doctor,));?>" >
+              array('controller' => 'index','action'=>'deleteDoctor','id' => $doctor->id,));?>" >
     	 <input class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
     	 
      	</form>

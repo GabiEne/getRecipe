@@ -3,6 +3,7 @@
 namespace Application\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Application\Entity\Account;
 use Application\Entity\Drugs;
 use Doctrine\ORM\Mapping\Table;
 use Doctrine\ORM\Mapping\ManyToMany;
@@ -12,25 +13,8 @@ use Doctrine\ORM\Mapping\ManyToMany;
  *
  *
  */
-class Pharmacy{
-	/**
-
-	* @ORM\Id
-	* @ORM\GeneratedValue(strategy = "AUTO")
-	* @ORM\Column(type="integer")
-	*/
-
-	protected $id;
-
-	public function getId(){
-		return $this->id;
-
-	}
-
-	public function setId($id){
-		$this->id =$id;
-	}
-
+class Pharmacy extends Account{
+	
 	/**
 	 * @ORM\Column(type= "string")
 	 *
@@ -47,19 +31,7 @@ class Pharmacy{
 		$this->name =$name;
 	}
 
-	/**
-	 * @ORM\Column(type= "string",length=30)
-	 *
-	 */
-	protected   $password;
 
-	public function getPassword(){
-		return $this->password;
-
-	}
-	public function setPassword($password){
-		$this->password =$password;
-	}
 
 
 	/**
@@ -108,19 +80,7 @@ class Pharmacy{
 		
 	}
 	
-	/**
-	 * @ORM\Column(type= "string")
-	 *
-	 */
-	protected $email;
-	
-	public function getEmail(){
-		return $this->email;
-	
-	}
-	public function setEmail($email){
-		$this->email =$email;
-	}
+
 	/**
 	 * @ORM\Column(type= "string")
 	 *
@@ -136,6 +96,8 @@ class Pharmacy{
 		$this->website =$website;
 	
 	}
+
+	
 	
 	/**
 	 *@var@ORM\Doctrine\Common\Collections\ArrayCollection

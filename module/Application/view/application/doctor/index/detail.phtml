@@ -10,11 +10,12 @@
   
   <?php 
 	  echo $this->form()->openTag($form);
-	  echo $this->formHidden($form->get('id_doctor'));
+	  echo $this->formHidden($form->get('id'));
+	  echo $this->formHidden($form->get('type'));
 	?>
    <div class="form-group">
    <?php
-      echo $this->formRow($form->get('id_doctor'));
+      echo $this->formRow($form->get('id'));
 	  echo $this->formRow($form->get('username'));
 	  echo $this->formRow($form->get('password'));
   ?>

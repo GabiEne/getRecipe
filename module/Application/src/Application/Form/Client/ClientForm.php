@@ -45,6 +45,15 @@ use Zend\Validator\ValidatorInterface;
          	 		    'placeholder' => 'Enter your password',
          		),
          ));
+         $this->add(array(
+		   		'name' => 'type',
+		   		'type' => 'hidden',
+		   		
+		   		'attributes' => array(
+		   				'value' => '1',
+		   		),
+		   		 
+		   ));
          
 		 $this->add(array(
              'name' => 'firstname',
@@ -69,7 +78,7 @@ use Zend\Validator\ValidatorInterface;
 		  		),
          ));
 		  
-		
+		 
 		   
 		    $this->add(array(
              'name' => 'email',
