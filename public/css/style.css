@@ -107,3 +107,49 @@ div.container a.brand {
 	width: 100%;
 	
 }
+
+.navbar-brand {
+  width: 125px;
+  line-height: 0px;
+  padding-top: 15px;
+  padding-left: 0px;
+  padding-right: 0px;
+ 
+  padding-bottom: 8px;
+  
+}
+.nav.navbar-nav li{
+	
+
+margin-left: 10px;
+margin-top: 8px;
+}
+.nav.navbar-nav li a:hover {
+   
+    border-bottom: 2px solid #4FA927;
+   
+}
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  border-color: #050505;
+}
+.navbar-inverse {
+  background-image: -webkit-linear-gradient(top,#020B22 0,#000206 100%);
+  background-image: linear-gradient(to bottom,#020B22 0,#000206 100%);
+ 
+}
+.navbar-inverse .navbar-nav>.active>a {
+  background-image: -webkit-linear-gradient(top,#020B22 0,#000206  100%);
+  background-image: linear-gradient(to bottom,#020B22 0,#000206 100%);
+}
+.cd-hero-slider li:first-of-type {
+   background-image: linear-gradient(to bottom,#000000 0,#02102D 100%);
+  background-color: #000;
+  background-repeat: repeat-x;
+}
+.navbar-inverse {
+  background-color: #000;
+  border-color: #000000;
+}
+.cd-hero-slider .cd-btn {
+  background-color: rgba(31, 111, 18, 0.9)!important;
+}
