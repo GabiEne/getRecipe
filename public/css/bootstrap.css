@@ -1,4 +1,4 @@
-/*!
+navbar-header/*!
  * Bootstrap v3.0.3 (http://getbootstrap.com)
  * Copyright 2013 Twitter, Inc.
  * Licensed under http://www.apache.org/licenses/LICENSE-2.0
@@ -4444,8 +4444,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 @media (min-width: 768px) {
   .container > .navbar-header,
   .container > .navbar-collapse {
-    margin-right: 0;
+  /*  margin-right: 0;
     margin-left: 0;
+    --era initial
+    */
+    margin-right: -15px;
+    margin-left: -15px;
   }
 }
 

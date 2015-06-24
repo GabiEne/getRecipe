@@ -116,7 +116,20 @@ class User{
 		$this->email =$email;
 	}
 	
-
+	/**
+	 * @ORM\Column(type= "smallint", length = 6, options={"default":0}))
+	 *
+	 */
+	
+	protected $isActive = 0 ;
+	
+	public function getisActive(){
+		return $this->isActive;
+	
+	}
+	public function setisActive($isActive){
+		$this->isActive =$isActive;
+	}
  	public function __get($property){
  		
    		 return $this->$property;
