@@ -14,6 +14,7 @@ use Zend\Validator\ValidatorInterface;
          parent::__construct('client');
          $this->setAttribute('method', 'post');
          $this->setAttribute('class', 'form-vertical');
+         
          $this->setHydrator(new DoctrineHydrator($objectManager,'Application\Entity\User'))
               ->setObject(new User());
         
@@ -48,9 +49,9 @@ use Zend\Validator\ValidatorInterface;
          $this->add(array(
 		   		'name' => 'type',
 		   		'type' => 'hidden',
-		   		
+         		'value' => '1',
 		   		'attributes' => array(
-		   				'value' => '2',
+		   				'value' => '1',
 		   		),
 		   		 
 		   ));

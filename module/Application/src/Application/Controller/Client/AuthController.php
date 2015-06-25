@@ -51,6 +51,8 @@ public function loginAction()
 						$sessionManager->rememberMe($time);
 					}
 					//- return $this->redirect()->toRoute('home');
+					return $this->redirect()->toRoute('client/index3',
+							array('controller' => 'index', 'action'=> 'welcome'));
 				}
 				foreach ($authResult->getMessages() as $message) {
 					$messages .= "$message\n"; 

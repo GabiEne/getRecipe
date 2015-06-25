@@ -15,6 +15,7 @@ use Zend\Validator\ValidatorInterface;
          parent::__construct('pharmacy');
          $this->setAttribute('method', 'post');
          $this->setAttribute('class', 'form-vertical');
+         
          $this->setHydrator(new DoctrineHydrator($objectManager,'Application\Entity\Pharmacy'))
               ->setObject(new Pharmacy());
         

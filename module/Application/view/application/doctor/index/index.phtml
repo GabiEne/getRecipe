@@ -1,1 +1,6 @@
 <h1> What's up Doc?</h1>
+				 <div>   <?php // view helper
+                 if ($user = $this->identity()) {
+        echo 'Logged in as ' . $this->escapeHtml($user->getUsername()) .$this->escapeHtml($user->getType() );
+        }
+?>	
