@@ -50,7 +50,7 @@ use Zend\Validator\ValidatorInterface;
 		   		'type' => 'hidden',
 		   		
 		   		'attributes' => array(
-		   				'value' => '1',
+		   				'value' => '2',
 		   		),
 		   		 
 		   ));
@@ -63,7 +63,7 @@ use Zend\Validator\ValidatorInterface;
              ),
 		 	 'attributes' => array(
 		 				'class' => 'form-control',
-		 	 		    'placeholder' => 'Your Firstname',
+		 	 		   
 		 		),
          ));
 		 
@@ -100,7 +100,7 @@ use Zend\Validator\ValidatorInterface;
              'attributes' => array(
                  'value' => 'Sign up',
                  'id' => 'submitbutton',
-             	  'class' => 'sign btn btn-primary',
+             	  'class' => 'usersignup btn btn-primary',
              ),
          ));
         

@@ -34,7 +34,18 @@ use Zend\Validator\ValidatorInterface;
          	  		
          		),
          ));
+         $this->add(array(
+         		'name' => 'username',
+         		'type' => 'Text',
+         		'options' => array(
+         				'label' => 'Username',
+         		),
+         		'attributes' => array(
+         				'class' => 'form-control',
          
+         		),
+         ));
+          
          $this->add(array(
              'name' => 'password',
              'type' => 'Password',

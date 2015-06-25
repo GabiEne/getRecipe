@@ -81,7 +81,7 @@ div.container a.brand {
 	margin-right:5%;
 	}
 .sign{
-	width: 48%;
+	width: 100%;
 }
  #map-canvas{
   height: 480px;
@@ -94,8 +94,14 @@ div.container a.brand {
 	float:left;
 	padding-right:30px;
 }
-#address, #city, #street, #streetnumber,#email{
+ #city, #street, #streetnumber,#email{
 	width: 95%;
+}
+#address{
+	width:100%;
+}
+#addressuser{
+	width: 20%;
 }
 .emaildoc{
  
@@ -142,7 +148,7 @@ margin-top: 8px;
   background-image: linear-gradient(to bottom,#020B22 0,#000206 100%);
 }
 .cd-hero-slider li:first-of-type {
-   background-image: linear-gradient(to bottom,#000000 0,#02102D 100%);
+  background-image: linear-gradient(to bottom,#000000 0,#02102D 100%);
   background-color: #000;
   background-repeat: repeat-x;
 }
@@ -155,4 +161,192 @@ margin-top: 8px;
 }
 .navbar-brand img{
 	width:100px;
+}
+.formuser{
+	width: 50%;
+}
+.mapuser{
+	float:right!important;
+}
+#datepicker{
+	width: 100%;
+}
+#userprofile{
+	width: 50%;
+}
+.user{
+	width: 45%;
+	float:left;
+}
+#userprofile .form-group .form-control {
+	
+}
+.form-user{
+	width:108%;
+}
+
+.userformcontainer{
+	background : url('../img/pills.jpg');
+}
+
+.svg-main  {
+  color: white;
+  z-index: 1px;
+  height: 420px;
+  display: block;
+  width: 100%;
+  
+}
+
+.svg-main {
+  fill: #f15a29;
+  opacity: 0.8;
+}
+.adddetails{
+background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    border:2px solid #fff;
+    outline:none;
+    color:white;
+    padding:7px;
+}
+.adddetails:hover{
+	
+}
+
+.svg-main svg {
+  position: absolute;
+  height: 420px;
+  width: 100%;
+  text-decoration: none;}
+.sec-svg {
+  background-position: center -435px;
+}
+.svg-main.sec-svg {
+  fill: #4c4b5b!important;
+}
+.svg-main h1, .svg-main h2, .svg-main p {
+  padding-bottom: 10px;
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  transition-duration: 0.3s;
+  margin-bottom: 0;
+  width: 42%;
+  color: #fff;
+}
+
+
+.usersignup,.userprofile {
+  background: #119921;
+  background-image: -webkit-linear-gradient(top, #119921, #116b1c);
+  background-image: -moz-linear-gradient(top, #119921, #116b1c);
+  background-image: -ms-linear-gradient(top, #119921, #116b1c);
+  background-image: -o-linear-gradient(top, #119921, #116b1c);
+  background-image: linear-gradient(to bottom, #119921, #116b1c);
+  -webkit-border-radius: 6;
+  -moz-border-radius: 6;
+  border-radius: 6px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 14px;
+  padding: 5px 10px 5px 10px;
+  text-decoration: none;
+    border-color: #3BAB28;
+    width: 27%;
+}
+.userprofile{
+	width: 400px;
+}
+.usersignup:hover,.userprofile:hover {
+  background: #085c08;
+  background-image: -webkit-linear-gradient(top, #085c08, #08470a);
+  background-image: -moz-linear-gradient(top, #085c08, #08470a);
+  background-image: -ms-linear-gradient(top, #085c08, #08470a);
+  background-image: -o-linear-gradient(top, #085c08, #08470a);
+  background-image: linear-gradient(to bottom, #085c08, #08470a);
+  text-decoration: none;
+}
+
+.login{
+	
+	color: white!important;
+}
+.login h1{
+	text-transform:uppercase;
+}
+.login input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(121, 124, 144, 0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.login input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border:1px solid rgba(121, 124, 144, 0.6)
+	border-radius: 2px;
+	color: #fff;
+	
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.login input[type=button]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.login input[type=button]:hover{
+	opacity: 0.8;
+}
+
+.login input[type=button]:active{
+	opacity: 0.6;
+}
+
+.login input[type=text]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+
+.login input[type=button]:focus{
+	outline: none;
+}
+
+::-webkit-input-placeholder{
+   color:rgba(68, 69, 77, 0.6);
+}
+
+::-moz-input-placeholder{
+   color: rgba(68, 69, 77, 0.6);
+}
+#docname, #address, #datepicker{
+	width: 400px!important;
 }

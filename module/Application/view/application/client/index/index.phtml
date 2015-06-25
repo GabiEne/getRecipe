@@ -1,11 +1,89 @@
+<link rel="stylesheet" type="text/css" href="../../../css/svg/normalize.css" />
+<script src="../../../js/snap.svg-min.js"></script>
+<style>
+body{
+ background: url("../../../img/user.jpg") no-repeat center 0;
+ background-size:cover;
+}
+</style>
+<div class="container1">
+<main class="main">	
+ <section id="grid" class="grid clearfix">
+ <a href="<?php echo $this->url('client/index3',
+           array('controller' => 'index','action'=>'createprofile', 'id'=>$id));?>" data-path-hover="m -0.07448744,-2.7052246 1925.78018744,0 0,430.9607746 -1925.78018744,0 z" class="svg-main" >
+        <svg viewBox="330 0 1500 428" preserveAspectRatio="none">
+            <path d="m 4.8027062,-0.3661647 1016.5238938,0 60.0468,429.2277947 0,0 -1076.5706938,0 z"/></path>
+        </svg>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                  <h1> Hello <?php  echo $user->getFirstname() . " " . $user->getLastname() ."!";?></h1>
+                  <h2>Start by adding your details so we can easily find all the pharmacies near you !</h2>
+                  <p >An important step in buliding your profile is adding also the name of your doctor. If your doctor is already registred you will be automatically connected with him! If not, we will send him an invitation!</p>
+                  <button class="adddetails">Add Details</button>
+                 
+              </div>
+            </div>
 
-<div>
+        </div>
+    </a>
+       <a href="<?php echo $this->url('client/index3',
+           array('controller' => 'index','action'=>'viewprofile', 'id'=>$id));?>" data-path-hover="m 1923.0667,-2.7052226 -1925.7802,0 0,430.9607726 1925.7802,0 z" class="svg-main sec-svg">
+        <svg viewBox="100 3 1500 425" preserveAspectRatio="none">
+            <path d="m 1923.2194,2.2728511 -1016.52385,0 -60.0468,429.2277989 0,0 1076.57065,0 z"/></path>
+        </svg>
+        <div class="container">
+            <div class="row">
+              <div class="col-lg-12">
+                  <h1>View Your Profile</h1>
+                  <p>If you do not prefer to add your details you can still view your profile but with fewer options. You can find meds, see details, news etc. </p>
+                  <button class="adddetails">View profile</button>
+              </div>
+            </div>
 
+        </div>
+    </a>
+    
+	  </section> 
+    </a>
+		</main>		
+			
+		</div><!-- /container -->
+		<script>
+			(function() {
+	
+				function init() {
+					var speed = 250,
+						easing = mina.easeinout;
+
+					[].slice.call ( document.querySelectorAll( '#grid > a' ) ).forEach( function( el ) {
+						var s = Snap( el.querySelector( 'svg' ) ), path = s.select( 'path' ),
+							pathConfig = {
+								from : path.attr( 'd' ),
+								to : el.getAttribute( 'data-path-hover' )
+							};
+
+						el.addEventListener( 'mouseenter', function() {
+							path.animate( { 'path' : pathConfig.to }, speed, easing );
+						} );
+
+						el.addEventListener( 'mouseleave', function() {
+							path.animate( { 'path' : pathConfig.from }, speed, easing );
+						} );
+					} );
+				}
+
+				init();
+
+			})();
+		</script>
 </div>
+<!--  
 <h1>View from Client</h1>
-<div> Hello <?php  echo $user->getFirstname() . " " . $user->getLastname() ."!";?>
- <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
-           array('controller' => 'index','action'=>'createprofile', 'id'=>$id));?>"> Add you address</a>
-           <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
-           array('controller' => 'index','action'=>'viewprofile', 'id'=>$id));?>"> View Your profile</a>
+<div> Hello <?php // echo $user->getFirstname() . " " . $user->getLastname() ."!";?>
+ <a class=" ed btn btn-warning dropdown-toggle" href="<?php// echo $this->url('client/index3',
+          // array('controller' => 'index','action'=>'createprofile', 'id'=>$id));?>"> Add you address</a>
+           <a class=" ed btn btn-warning dropdown-toggle" href="<?php //echo $this->url('client/index3',
+          // array('controller' => 'index','action'=>'viewprofile', 'id'=>$id));?>"> View Your profile</a>
 </div>
+-->

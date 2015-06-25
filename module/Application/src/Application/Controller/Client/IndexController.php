@@ -23,10 +23,13 @@ namespace Application\Controller\Client;
  use Zend\Db\Sql\Select;
  use Zend\Db\Sql\Where;	
  use Zend\Db\Adapter\Adapter;
+ use Zend\Mvc\MvcEvent;
 
 
  class IndexController extends AbstractActionController
  {
+ 
+ 	
      public function indexAction(){
      	
      	 return new ViewModel();
@@ -35,7 +38,7 @@ namespace Application\Controller\Client;
      
      
      public function welcomeAction(){
-     	
+     	$this->layout("layout/layoutuser");
      	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
      	$id = $this->params()->fromRoute('id');
      	$user = $objectManager->find('Application\Entity\User', $id);

@@ -168,7 +168,7 @@ use Application\Form\Drugs\DrugsForm;
     	$id = (int) $this->params()->fromRoute('id');
     	var_dump((int) $this->params()->fromRoute('id'));
     	$doctor= $objectManager->find('Application\Entity\Doctors', $id);
-    	var_dump($this->request->isPost());
+    	
     
     	if ($this->request->isPost()) {
     

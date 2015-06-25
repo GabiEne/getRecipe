@@ -26,7 +26,7 @@ use Zend\Validator\ValidatorInterface;
              'name' => 'address',
              'type' => 'Text',
              'options' => array(
-                 'label' => 'Adress',
+                 'label' => 'Address',
                 ),
          	  'attributes' => array(
          			'class' => 'form-control',
@@ -65,6 +65,7 @@ use Zend\Validator\ValidatorInterface;
          		),
          		'attributes' => array(
          				'class' => 'form-control',
+         				 'id'  => 'datepicker'
          				
          		),
          ));
@@ -75,7 +76,8 @@ use Zend\Validator\ValidatorInterface;
          				'label' => 'First Name Of Your Doctor',
          		),
          		'attributes' => array(
-         				'class' => 'form-control',
+         				'class' => 'form-control form-user',
+         				'id' => 'docname',
          				 
          		),
          ));
@@ -86,7 +88,8 @@ use Zend\Validator\ValidatorInterface;
          				'label' => 'Last Name Of Your Doctor',
          		),
          		'attributes' => array(
-         				'class' => 'form-control',
+         				'class' => 'form-control form-user',
+         				'id' => 'docname',
          
          		),
          ));
@@ -97,7 +100,7 @@ use Zend\Validator\ValidatorInterface;
          		'attributes' => array(
          				'value' => 'Set Adress',
          				'id' => 'submitbutton',
-         				'class' => 'sign btn btn-primary',
+         				'class' => 'userprofile btn btn-primary',
          		),
          ));
    }
