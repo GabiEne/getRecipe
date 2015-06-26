@@ -188,7 +188,8 @@ namespace Application\Controller\Client;
      }
     
      public function viewProfileAction(){
-     	$user = $this->identity();
+     	
+     	if($user = $this->identity()){
      	if ($user->getType() == 1) {
      		$id=$user->getId();
      	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
@@ -201,8 +202,12 @@ namespace Application\Controller\Client;
      	else
      		{
      			return $this->redirect()->toRoute('client/index3',
-     					array('controller' => 'index', 'action'=> 'login'));
+     					array('controller' => 'auth', 'action'=> 'login'));
      		}
+     }
+     else
+     	return $this->redirect()->toRoute('client/index3',
+     			array('controller' => 'auth', 'action'=> 'login'));
      }
      
      public function findPharmacyAction(){
