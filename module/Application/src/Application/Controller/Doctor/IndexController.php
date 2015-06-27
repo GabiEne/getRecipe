@@ -57,9 +57,7 @@ class IndexController extends AbstractActionController
      	 
      }
      
-     public function loginAction(){
-     	
-     }
+     
      public function seeYourPacients(){
      	
      }

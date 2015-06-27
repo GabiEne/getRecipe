@@ -150,6 +150,34 @@ class Drugs{
 		return $this->pharmacy;
 	}
 
+	/*/**
+	 *@var@ORM\Doctrine\Common\Collections\ArrayCollection
+	 *@ORM\ManyToMany(targetEntity="Prescription", inversedBy="drugs")
+	 *@ORM\JoinTable(name="prescription_drugs")
+	 **/
+	/**
+	 *@ORM\ManyToMany(targetEntity="Prescription", mappedBy="drugs" ,cascade={"persist"})
+	 **/
+	private $prescription;
+	
+	public function __constructprescription() {
+		$this->prescription = new \Doctrine\Common\Collections\ArrayCollection();
+	}
+	
+	/**
+	 * Get prescription
+	 *
+	 * @return PdPrescription
+	 */
+	public function getPrescription()
+	{
+		return $this->prescription;
+	}
+	
+	public function setPrescription($prescription){
+		$this->prescription =$prescription;
+	}
+	
  	public function __get($property){
  		
    		 return $this->$property;

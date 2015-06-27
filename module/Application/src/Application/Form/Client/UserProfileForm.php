@@ -23,6 +23,30 @@ use Zend\Validator\ValidatorInterface;
          ));
          
          $this->add(array(
+         		'name' => 'firstname',
+         		'type' => 'Text',
+         		'options' => array(
+         				'label' => 'First Name',
+         		),
+         		'attributes' => array(
+         				'class' => 'form-control',
+         				'id' =>'firstname',
+         
+         		),
+         ));
+         	
+         $this->add(array(
+         		'name' => 'lastname',
+         		'type' => 'Text',
+         		'options' => array(
+         				'label' => 'Last Name',
+         		),
+         		'attributes' => array(
+         				'class' => 'form-control',
+         				'id' =>'lastname',
+         		),
+         ));
+         $this->add(array(
              'name' => 'address',
              'type' => 'Text',
              'options' => array(

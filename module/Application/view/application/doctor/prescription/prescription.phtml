@@ -1,0 +1,42 @@
+
+<link rel="stylesheet" href="../../../css/docsupport/style.css">
+<link rel="stylesheet" href="../../../css/docsupport/prism.css">
+<link rel="stylesheet" href="../../../css/chosen.css">
+<div class="page-header" role="navigation">
+ <?php
+	 $title = 'Add prescription';
+	 $this->headTitle($title);
+ ?>
+   <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+  <?php $form->prepare();  ?>
+  
+  <?php 
+	  echo $this->form()->openTag($form);
+	  echo $this->formRow($form->get('id'));
+	  echo $this->formRow($form->get('prescription'));
+	  echo $this->formRow($form->get('drugs'));
+	  echo $this->formRow($form->get('submit'));
+	  ?>
+	  <?php /*?>
+	  <select name="client">
+	  <?php foreach ($clients as $client):?>
+	  		<option value="<?php echo $client['id']?>"><?php echo $client['firstname']?> <?php echo $client['lastname']?></option>
+	  <?php endforeach;?>
+	  </select>
+	 
+	  */?>
+	  <script src="../../../js/chosen.jquery.js" type="text/javascript"></script>
+	    <script type="text/javascript">
+    var config = {
+      '.chosen-select'           : {},
+      '.chosen-select-deselect'  : {allow_single_deselect:true},
+      '.chosen-select-no-single' : {disable_search_threshold:10},
+      '.chosen-select-no-results': {no_results_text:'Oops, nothing found!'},
+      '.chosen-select-width'     : {width:"95%"}
+    }
+    for (var selector in config) {
+      $(selector).chosen(config[selector]);
+    }
+  </script>

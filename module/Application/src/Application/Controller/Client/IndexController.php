@@ -41,7 +41,7 @@ namespace Application\Controller\Client;
      public function welcomeAction(){
      	
      	$this->layout("layout/layoutuser");
-     	$user = $this->identity();
+     	if($user = $this->identity()){
      	
      	if ($user->getType() == 1) {
      	$id=$user->getId();
@@ -51,8 +51,14 @@ namespace Application\Controller\Client;
      	$view= new ViewModel(array('id' => $id, 'user' => $user));
      	$view->setTemplate('application/client/index/index');
      	return $view;
-     	
      	}
+     	
+     	else{
+     		return $this->redirect()->toRoute('client/index3',
+     				array('controller' => 'auth', 'action'=> 'login'));
+     	}
+     }
+     	else
      	return $this->redirect()->toRoute('home');
      	
      }
@@ -63,7 +69,7 @@ namespace Application\Controller\Client;
      	if ($this->request->isPost()) {
      		$formdoc->setData($this->request->getPost());
      		if($formdoc->isValid()) {
-     			$id = $this->params()->fromRoute('id');
+     			
      			$transport = new \Zend\Mail\Transport\Sendmail();
      			$message   = new \Zend\Mail\Message();
      			$renderer  = new \Zend\View\Renderer\PhpRenderer();
@@ -76,7 +82,7 @@ namespace Application\Controller\Client;
      				$result = $service->send();
      				echo $result->isValid() ? "Success!!" : "Error";
      				return $this->redirect()->toRoute('client/index3',
-     						array('controller' => 'index', 'action'=> 'viewprofile', 'id'=>$id));
+     						array('controller' => 'index', 'action'=> 'viewprofile'));
      	
      			}
      			catch (\Exception $e) {
@@ -121,14 +127,14 @@ namespace Application\Controller\Client;
      				$objectManager->persist($profile);
      				$objectManager->flush();
      				return $this->redirect()->toRoute('client/index3',
-     						array('controller' => 'index', 'action'=> 'viewprofile', 'id'=>$id));
+     						array('controller' => 'index', 'action'=> 'viewprofile'));
      			}
      		    
      			else{
      				$objectManager->persist($profile);
      				$objectManager->flush();
      				return $this->redirect()->toRoute('client/index3',
-     						array('controller' => 'index', 'action'=> 'sendmail','id'=>$id));
+     						array('controller' => 'index', 'action'=> 'sendmail'));
      		    }
      		}
      	}
@@ -170,16 +176,39 @@ namespace Application\Controller\Client;
      	     	 if($form->isValid()) {
      				$objectManager->persist($client);
      				$objectManager->flush();
-     				return $this->redirect()->toRoute('client/index3',
+     				$authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+     				$adapter = $authService->getAdapter();
+     				$adapter->setIdentityValue($form->get('username')->getValue());
+     				//var_dump($form->get('username')->getValue()); //$data['usr_name']
+     				$adapter->setCredentialValue($form->get('password')->getValue());
+     				
+     				$authResult = $authService->authenticate();
+     				// echo "<h1>I am here</h1>";
+     				if ($authResult->isValid()) {
+     					$identity = $authResult->getIdentity();
+     					$authService->getStorage()->write($identity);
+     					$time = 1209600; // 14 days 1209600/3600 = 336 hours => 336/24 = 14 days
+     					//-					if ($data['rememberme']) $authService->getStorage()->session->getManager()->rememberMe($time); // no way to get the session
+     					
+     					//- return $this->redirect()->toRoute('home');
+     					return $this->redirect()->toRoute('client/index3',
+     							array('controller' => 'index', 'action'=> 'welcome'));
+     				}
+     				else{return $this->redirect()->toRoute('client/index3',
+     				array('controller' => 'auth', 'action'=> 'login'));}
+     				
+     				/*return $this->redirect()->toRoute('client/index3',
      				array('controller' => 'auth', 'action'=> 'login'));
      				/*
      				return $this->redirect()->toRoute('client/index3',
      						array('controller' => 'index', 'action'=> 'createprofile' ,'id'=>$client->getId()));
      			*/}
      		}
+     		
          else{
          	
          }
+         
         $form->get('type')->setValue('1');
      	$view= new ViewModel(array('form' => $form));
      	$view->setTemplate('application/client/index/detail');
@@ -212,7 +241,7 @@ namespace Application\Controller\Client;
      
      public function findPharmacyAction(){
      	$id = $this->params()->fromRoute('id'); 
-     	if($user = $this->identity()){;
+     	if($user = $this->identity()){
      		if ($user->getType() == 1) {
      		
      
@@ -241,7 +270,7 @@ namespace Application\Controller\Client;
      				->andwhere('et.longitude <=' . $userLatitude2 );
 
      	 
-     	var_dump( $result = $qb->getQuery()->getResult());
+     	            var_dump( $result = $qb->getQuery()->getResult());
      	
      
      	
@@ -276,7 +305,7 @@ namespace Application\Controller\Client;
      	}
      	else{
      		return $this->redirect()->toRoute('client/index3',
-     				array('controller' => 'index', 'action'=> 'login'));
+     				array('controller' => 'auth', 'action'=> 'login'));
      }
         $view= new ViewModel(array('id'=>$id));
      	$view->setTemplate('application/client/index/viewprofile');
@@ -317,12 +346,40 @@ namespace Application\Controller\Client;
       	$view->setTemplate('application/client/index/viewmeds');
       	return $view;
  }
+ 
+     public function seePrescriptionAction(){
+     	$user = $this->identity();
+     	if($user = $this->identity()){
+     	if ($user->getType() == 1) {
+     		$id=$user->getId();
+     		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+     		$prescriptionfound = $objectManager->getRepository('Application\Entity\Prescription')->findBy(
+     				array('user' => $id));
+     		//foreach($prescriptionfound as $p){
+     		//	 var_dump($p->getUser());
+     	///
+     		/////$drugs = $p->getDrugs();
+     		//foreach($drugs as $drug){
+     		// var_dump($drug->getName());
+     		//}
+     	//}
+     }
+     else{
+     	return $this->redirect()->toRoute('client/index3',
+     			array('controller' => 'index', 'action'=> 'welcome'));
+     }
+     	}
+     else{
+     	return $this->redirect()->toRoute('client/index3',
+     			array('controller' => 'auth', 'action'=> 'login'));
+   }
+ 
+   $view= new ViewModel(array('prescriptions'=>$prescriptionfound));
+   $view->setTemplate('application/client/index/viewprescription');
+   return $view;
+ 
  }
- 
 
- 
- 
-
-      
+ } 
    
  

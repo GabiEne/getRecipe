@@ -67,6 +67,36 @@ public function getUser()
 {
 	return $this->user;
 }
+
+/**
+ * @ORM\Column(type= "string")
+ *
+ */
+protected $firstname;
+
+public function getFirstname(){
+	return $this->firstname;
+
+}
+public function setFirstname($firstname){
+	$this->firstname =$firstname;
+}
+
+/**
+ * @ORM\Column(type= "string")
+ *
+ */
+protected $lastname;
+
+public function getLastname(){
+	return $this->lastname;
+
+}
+public function setLastname($lastname){
+	$this->lastname =$lastname;
+}
+
+
 	/**
 	 * @ORM\Column(type= "string")
 	 *

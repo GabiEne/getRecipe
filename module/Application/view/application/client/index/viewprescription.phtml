@@ -1,0 +1,39 @@
+<?php
+$title = 'Prescriptions';
+ $this->headTitle($title);
+ ?>
+
+ <div class="page-header" role="navigation">
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+ <?php $i = 0;?>
+  <?php foreach ($prescriptions as $p) : ?>
+ <table class="display" >
+ <h1><?php $i++; echo "Prescription" . $i; ?></h1>
+ <thead> 
+ <tr>
+     <th>Drug Name</th>
+
+ </tr>
+ </thead>
+ <tbody>
+
+
+  <?php 
+       $drugs = $p->getDrugs();
+       foreach($drugs as $drug):
+?>
+ <tr>
+     <td><?php echo $this->escapeHtml($drug->getName());?> </td>
+         <?php $pharmacy = $drug->getPharmacy();?> 
+         <?php foreach ($pharmacy as $pharma) :?>
+     <td><?php echo"Available at ". $this->escapeHtml($pharma->getName());?> </td>
+</tr>
+
+
+   <?php endforeach; ?>
+  <?php endforeach; ?>
+  </tbody>
+ </table>
+ <?php endforeach; ?>
+ </body>

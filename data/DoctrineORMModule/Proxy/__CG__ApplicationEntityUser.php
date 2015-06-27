@@ -83,10 +83,10 @@ class User extends \Application\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'firstname', 'lastname', 'id', 'username', 'password', 'email', 'type', 'isActive');
+            return array('__isInitialized__', 'id', 'username', 'password', 'email', 'type', 'isActive');
         }
 
-        return array('__isInitialized__', 'firstname', 'lastname', 'id', 'username', 'password', 'email', 'type', 'isActive');
+        return array('__isInitialized__', 'id', 'username', 'password', 'email', 'type', 'isActive');
     }
 
     /**
@@ -192,50 +192,6 @@ class User extends \Application\Entity\User implements \Doctrine\ORM\Proxy\Proxy
     }
 
     
-    /**
-     * {@inheritDoc}
-     */
-    public function getFirstname()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getFirstname', array());
-
-        return parent::getFirstname();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setFirstname($firstname)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setFirstname', array($firstname));
-
-        return parent::setFirstname($firstname);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getLastname()
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getLastname', array());
-
-        return parent::getLastname();
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function setLastname($lastname)
-    {
-
-        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setLastname', array($lastname));
-
-        return parent::setLastname($lastname);
-    }
-
     /**
      * {@inheritDoc}
      */

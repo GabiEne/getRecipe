@@ -55,29 +55,7 @@ use Zend\Validator\ValidatorInterface;
 		   		),
 		   		 
 		   ));
-         
-		 $this->add(array(
-             'name' => 'firstname',
-             'type' => 'Text',
-             'options' => array(
-                 'label' => 'First Name',
-             ),
-		 	 'attributes' => array(
-		 				'class' => 'form-control',
-		 	 		   
-		 		),
-         ));
-		 
-		  $this->add(array(
-             'name' => 'lastname',
-             'type' => 'Text',
-             'options' => array(
-                 'label' => 'Last Name',
-             ),
-		  	 'attributes' => array(
-		  				'class' => 'form-control',
-		  		),
-         ));
+     
 		  
 		 
 		   
@@ -120,12 +98,7 @@ use Zend\Validator\ValidatorInterface;
 								array('name' => 'EmailAddress')
 							),
 				 ),
-				'username' => array(
-						'required' => true
-				 ),
-				'lastname' => array (
-					    'required' => true
-				         )
+				
 				);
 	}
  }

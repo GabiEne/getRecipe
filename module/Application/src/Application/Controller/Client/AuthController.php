@@ -27,7 +27,7 @@ public function loginAction()
          
 			$form->setInputFilter(new LoginFilter($this->getServiceLocator()));
             $form->setData($request->getPost());
-			;
+			
             if ($form->isValid()) {
 				$data = $form->getData();			
 				// $data = $this->getRequest()->getPost();

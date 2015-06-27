@@ -103,9 +103,11 @@ use Zend\Validator\ValidatorInterface;
 		   ));
 		   $this->add(array(
 		   		'name' => 'price',
-		   		'type' => 'Text',
+		   		'type' => 'number',
+		   		'step' =>'any',
 		   		'options' => array(
 		   				'label' => 'Price',
+		   				
 		   		),
 		   		'attributes' => array(
 		   				'class' => 'form-control',

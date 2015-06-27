@@ -18,27 +18,27 @@ $title = 'Users';
  
  <thead> 
  <tr>
-     <th>First Name</th>
-     <th>Last Name</th>
+     <th>UserName</th>
+    
 	
 	 <th>E-Mail</th>
 	 
-     <th>&nbsp;</th>
+   
  </tr>
  </thead>
  <tbody>
 
  <?php foreach ($users as $user) : ?>
  <tr>
-     <td><?php echo $this->escapeHtml($user->firstname);?> </td>
-     <td><?php echo $this->escapeHtml($user->lastname);?></td>
+     <td><?php echo $this->escapeHtml($user->getUsername());?> </td>
+     <td><?php echo $this->escapeHtml($user->getEmail());?></td>
 
-	 <td><?php echo $this->escapeHtml($user->email);?></td>
+	 <td><?php //echo $this->escapeHtml($user->getEmail());?></td>
 	 <td>
        <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('admin/index4',
-           array('controller' => 'index','action'=>'detail', 'id' => $user->id));?>">Edit User</a>
+           array('controller' => 'index','action'=>'detail', 'id' => $user->getId()));?>">Edit User</a>
     	<form class ="del1" method="post" action="<?php echo $this->url('admin/index4',
-              array('controller' => 'index','action'=>'delete','id' => $user->id,));?>" >
+              array('controller' => 'index','action'=>'delete','id' => $user->getId()));?>" >
     	 <input class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
     	 
      	</form>

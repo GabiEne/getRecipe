@@ -1,16 +1,17 @@
 <style>
  body{
- background: url("../../img/may.jpg");
+ background: url("../../img/ok.jpg");
+ background-size: cover;
 
  }
 
  </style>
 <div class ="login">   
 <?php
-	 $title = 'Register as a new user';
+	 $title = 'Register as a new patient';
 	 $this->headTitle($title);
  ?>
-  <h1><?php echo $this->escapeHtml($title); ?></h1>
+
  <?php $form->prepare();  ?>
  <?php 
 	  echo $this->form()->openTag($form);
@@ -32,16 +33,7 @@
 	  		echo $this->formRow($form->get('password'));
      	 ?>
   	</div>
-    <div class="form-group">
-  		<?php 
-  			echo $this->formRow($form->get('firstname'));
-	    ?>
-	 </div>
-	 <div class="form-group">
-	  	 <?php 
-	  		echo $this->formRow($form->get('lastname'));
-      		?>
-  	</div>
+   
     <div class="form-group">
   		<?php 
      		 echo $this->formRow($form->get('email'));
