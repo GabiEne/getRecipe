@@ -1,11 +1,15 @@
 
+<style>
+
+</style>
+ <body class = "admin-page">
  <div class="page-header" role="navigation">
  <?php
-	 $title = 'Add new Pharmacy';
+	 $title = 'Register as a new Pharmacy';
 	 $this->headTitle($title);
  ?>
-   <h1><?php echo $this->escapeHtml($title); ?></h1>
- </div>
+   
+
 
   <?php $form->prepare();  ?>
   
@@ -18,9 +22,10 @@
  
       echo $this->formRow($form->get('id'));
       echo $this->formHidden($form->get('type'));
-	  echo $this->formRow($form->get('name'));
+      echo $this->formRow($form->get('username'));
 	  echo $this->formRow($form->get('password'));
-	  echo $this->formRow($form->get('username'));
+	
+	  echo $this->formRow($form->get('name'));
   ?>
 
   </div>
@@ -50,10 +55,7 @@
 	  echo $this->form()->closeTag();
   ?>
   </div>
-   <div id="panel">
-      <input id="latlng" type="text" value="40.714224,-73.961452">
-      <input type="button" value="Reverse Geocode" onclick="codeLatLng()">
-    </div>
+  
       <script src="https://maps.googleapis.com/maps/api/js?v=3.exp/AIzaSyDtxyFEN3DxkVQrbbpMyilWZWsy6dH39ac&signed_in=true&libraries=places"></script>
        
    <script>
@@ -143,3 +145,5 @@ google.maps.event.addDomListener(window, 'load', initialize);
    
    
   <div id="map-canvas"></div>
+  </div>
+  </body>

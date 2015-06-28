@@ -1,0 +1,39 @@
+<?php
+$title = 'Patients';
+ $this->headTitle($title);
+ ?>
+ <body class = "doctor-page">
+ <div class="page-header" role="navigation">
+ <h1><?php echo $this->escapeHtml($title); ?></h1>
+ </div>
+
+ <table class="display" id="example">
+ 
+ <thead> 
+ <tr>
+     <th>FirstName</th>
+     <th>LastName</th>
+     <th>Address</th>
+	
+	
+   
+ </tr>
+ </thead>
+ <tbody>
+
+ <?php foreach ($patients as $patient) : ?>
+ <tr>
+     
+     <td><?php echo $this->escapeHtml($patient->getFirstname()); ?></td>
+     <td><?php echo $this->escapeHtml($patient->getLastname()); ?></td>
+     <td><?php echo $this->escapeHtml($patient->getAddress()); ?></td>
+     
+     
+        
+      
+ </tr>
+
+ <?php endforeach; ?>
+  </tbody>
+ </table>
+ </body>

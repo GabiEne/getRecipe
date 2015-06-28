@@ -35,11 +35,11 @@ $title = 'Medicines';
      <td><?php echo $this->escapeHtml($drug->name);?> </td>
      <td><?php echo $this->escapeHtml($drug->activeingredient);?></td>
      <td><?php echo $this->escapeHtml($drug->producer);?></td>
-	 <td><?php echo $this->escapeHtml($drug->therapeutic_action);?>
-	 <!--  
-       <a class=" ed btn btn-warning dropdown-toggle" href="< php// echo $this->url('admin/index4',
-          // array('controller' => 'index','action'=>'detail', 'id' => $user->id));?>">View pharmacies</a>
-    -->
+	 <td><p style ="min-width: 150px";><?php echo $this->escapeHtml($drug->therapeutic_action); ?></p>
+	 
+       <a style="min-width: 150px; margin: 0 auto;" class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('pharmacy/index2',
+          array('controller' => 'index', 'action'=>'seedetail', 'idpharma'=> $drug->getId())); ?>">See Detail</a>
+   
       </td>
         
       

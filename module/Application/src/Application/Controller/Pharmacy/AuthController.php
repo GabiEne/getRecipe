@@ -1,5 +1,5 @@
 <?php
-namespace Application\Controller\Doctor;
+namespace Application\Controller\Pharmacy;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
@@ -91,7 +91,7 @@ public function loginAction()
     
     
     	// return $this->redirect()->toRoute('home');
-    	return $this->redirect()->toRoute('doctor/index1', array('controller' => 'auth', 'action' => 'login'));
+    	return $this->redirect()->toRoute('pharmacy/index2', array('controller' => 'auth', 'action' => 'login'));
     
     }
     

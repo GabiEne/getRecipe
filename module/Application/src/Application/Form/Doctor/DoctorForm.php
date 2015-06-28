@@ -142,7 +142,7 @@ use Zend\Validator\ValidatorInterface;
              'attributes' => array(
                  'value' => 'Sign up',
                  'id' => 'submitbutton',
-             	  'class' => 'sign btn btn-primary',
+             	  'class' => 'signupdoc btn btn-primary',
              ),
          ));
         

@@ -16,6 +16,7 @@ return array(
 						'Doctor\Recipe' => 'Application\Controller\Doctor\RecipeController',
 						'Doctor\Auth' =>'Application\Controller\Doctor\AuthController',
 						'Pharmacy\Index' => 'Application\Controller\Pharmacy\IndexController',
+						'Pharmacy\Auth' => 'Application\Controller\Pharmacy\AuthController',
 						'Admin\Index' => 'Application\Controller\Admin\IndexController',
 						'Admin\Auth' => 'Application\Controller\Admin\AuthController',
 						'Home' => 'Application\Controller\HomeController',

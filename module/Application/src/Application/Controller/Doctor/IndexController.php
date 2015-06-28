@@ -30,8 +30,19 @@ class IndexController extends AbstractActionController
      	     	 if($form->isValid()) {
      				$objectManager->persist($doctor);
      				$objectManager->flush();
+     				$authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+     				$adapter = $authService->getAdapter();
+     				$adapter->setIdentityValue($form->get('username')->getValue());
+     				//var_dump($form->get('username')->getValue()); //$data['usr_name']
+     				$adapter->setCredentialValue($form->get('password')->getValue());
+     				 
+     				$authResult = $authService->authenticate();
+     				// echo "<h1>I am here</h1>";
+     				if ($authResult->isValid()) {
+     					$identity = $authResult->getIdentity();
      				return $this->redirect()->toRoute('doctor/index1',
      						array('controller' => 'index', 'action'=> 'welcome','id'=>$doctor->getId()));
+     				}
      				/*
      				return $this->redirect()->toRoute('client/index3',
      						array('controller' => 'index', 'action'=> 'createprofile' ,'id'=>$client->getId()));
@@ -58,7 +69,29 @@ class IndexController extends AbstractActionController
      }
      
      
-     public function seeYourPacients(){
-     	
+     public function seePatientsAction(){
+     	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+     	$user = $this->identity();
+     	if($user = $this->identity()){
+     		if ($user->getType() == 2) {
+     			$id=$user->getId();
+     			
+     			$patientsfound = $objectManager->getRepository('Application\Entity\UserProfile')->findBy(
+     					array('doctor' => $id));
+     			
+     			
+     		}
+     		else{
+     			return $this->redirect()->toRoute('doctor/index1',
+     					array('controller' => 'auth', 'action'=> 'login'));
+     		}
+     	}else 
+     	{
+     		return $this->redirect()->toRoute('doctor/index1',
+     				array('controller' => 'index', 'action'=> 'detail'));
+     	}
+     	$view= new ViewModel(array('patients' => $patientsfound));
+	 	$view->setTemplate('application/doctor/index/viewpatients');
+	 	return $view;
      }
 }

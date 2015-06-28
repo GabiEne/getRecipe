@@ -73,12 +73,23 @@ class CreatePrescriptionForm extends Form
 				),
 		
 		));
+		
+		$this->add(array(
+				'name' => 'diagnostic',
+				'type' => 'Text',
+				'options' => array(
+						'label' => 'Diagnostic',
+				),
+				'attributes' => array(
+						'class' => 'form-control',
+				),
+		));
 
 		$this->add(array(
 				'name' => 'submit',
 				'type' => 'Submit',
 				'attributes' => array(
-						'value' => 'Sign up',
+						'value' => 'Send prescription',
 						'id' => 'submitbutton',
 						'class' => 'usersignup btn btn-primary',
 				),

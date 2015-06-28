@@ -1,6 +1,413 @@
- <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
-           array('controller' => 'index','action'=>'findpharmacy', 'id'=>$id));?>"> Find the nearest Pharmacy</a>
- <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
-           array('controller' => 'index','action'=>'seeprescriptions', 'id'=>$id));?>"> See your prescriptions</a>
- <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('client/index3',
-           array('controller' => 'index','action'=>'findmeds'));?>"> Find meds</a>
+ <!-- <a class=" ed btn btn-warning dropdown-toggle" href="<?php //echo $this->url('client/index3',
+           //array('controller' => 'index','action'=>'findpharmacy', 'id'=>$id));?>"> Find the nearest Pharmacy</a>
+ <a class=" ed btn btn-warning dropdown-toggle" href="<?php //echo $this->url('client/index3',
+          // array('controller' => 'index','action'=>'seeprescriptions', 'id'=>$id));?>"> See your prescriptions</a>
+ <a class=" ed btn btn-warning dropdown-toggle" href="<?php // echo $this->url('client/index3',
+          // array('controller' => 'index','action'=>'findmeds'));?>"> Find meds</a>  -->
+          <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<style>
+           
+.four-box {
+	display: block;
+	position:absolute;
+	width: 100%;
+	max-width: 1000px;
+	height: 300px;
+	margin: 0 auto;
+	top: 30%;
+	z-index: 99;
+	left: 50%;
+	margin-left: -500px;
+}
+
+.custom.slideblock .four-box {
+	display: block;
+	position: relative;
+	width: 100%;
+	max-width: 1000px;
+	height: 280px;
+	margin: 100px auto;
+		
+}
+.custom.slideblock .four-box {
+	display: block;
+	position: relative;
+	width: 100%;
+	max-width: 1000px;
+	height: 127px;
+	margin: 170px auto;
+}
+
+.four-box .semi-grup {
+	position: relative;
+	width: 50%;
+	float: left;
+	}
+
+.four-box .semi-grup .mini-box a {
+	float: left;
+	min-width: 238px;
+	width: 50%;
+	height: 200px;
+
+
+}
+.four-box .semi-grup .mini-box {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	width: 50%;
+}
+
+.four-box .semi-grup .mini-box:hover #textbox{
+	z-index: 999; 
+	
+}
+
+.westlogo {
+	margin : 0 auto ; 
+	max-width : 100px; 
+	display:block; 
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-ms-transform: scale(1);
+	-moz-transform:  scale(1);
+	transition: all 0.1s ease-in-out;
+}
+#textbox{
+	margin-top : 130px;
+	margin-left: 1px; 
+	text-transform : uppercase; 
+	color: white; 
+	font-family: OpenSans-Semibold; 
+	font-size: 15px;
+	left: 5px; 
+	bottom: 10px; 
+	position: absolute; 
+	z-index: 99;
+
+}
+
+#secondbox a, #firstbox a, #thirdbox a, #fourthbox a { 
+	transform: scale(1);
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	-o-transform: scale(1);
+	transition: all 0.1s ease-in-out;
+	-webkit-transition: all 0.1s ease-in-out;
+	-moz-transition: all 0.1s ease-in-out;
+	-ms-transition: all 0.1s ease-in-out;
+	-o-transition: all 0.1s ease-in-out;
+	webkit-transition: all 0.5s ease;
+     -moz-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+      -ms-transition: all 0.5s ease;
+          transition: all 0.5s ease;
+}
+
+#secondbox img, #firstbox img, #thirdbox img, #fourthbox img{
+	opacity: 2.4;
+
+}
+
+#secondbox a:hover, #firstbox a:hover, #thirdbox a:hover, #fourthbox a:hover{ 
+	z-index: 999;
+	position:relative;
+	color: white;
+    background-image: none;
+	background-color:#f15a29;
+	transform: scale(1.1);
+
+
+
+	
+	
+}
+
+ #firstbox a:hover + #textbox.text {
+	color: white; 
+}
+
+.text{
+	border-left: 2px solid orange; 
+	padding-left: 2px;
+	margin: 0 auto;
+	width: 200px;
+}
+.semitext {
+	font-size : 14px; 
+}
+.element{
+background: url("../../../img/03.jpg");
+}
+
+
+.fa {
+  display: inline-block;
+  font-family: FontAwesome !important;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  content: attr(data-icon);
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ 
+.row{
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.icon-boxes-1 {
+  float: left;
+  width: 100%;
+  margin: 65px 0 65px 0;
+  }
+  @media (min-width: 1200px){
+ .icon-box-3{
+  width: 25%;
+  float: left;
+  }
+.icon-box-back2 {
+  color: #fff;
+  line-height: 67px;
+  text-align: center;
+  font-size: 43px;
+  background: none;
+  height: 67px;
+  width: 100%;
+  margin: auto;
+  float: left;
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transform: rotate(40deg);
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+}.icon-box-3{
+ 
+  background: #f8f8f8;
+  border: 1px solid #dfdfdf;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  float: left !important;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+  padding-bottom: 20px;
+  }
+  .icon-box-3:hover .icon-boxwrap2 {
+  -webkit-transform: rotate(140deg);
+  -moz-transform: rotate(140deg);
+  -ms-transform: rotate(140deg);
+  -o-transform: rotate(140deg);
+  transform: rotate(140deg);
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+}
+.icon-boxwrap2 {
+  margin: 20px auto 0 auto;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  height: 67px;
+  width: 67px;
+  float: none;
+  background-color: #3abd2a;
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3abd2a), color-stop(50%, #3abd2a), color-stop(51%, #34a825), color-stop(100%, #34a825));
+  background: -webkit-linear-gradient(top, #3abd2a 0, #3abd2a 50%, #34a825 51%, #34a825 100%);
+  background: -moz-linear-gradient(top, #3abd2a 0, #3abd2a 50%, #34a825 51%, #34a825 100%);
+  background: -ms-linear-gradient(top, #3abd2a 0, #3abd2a 50%, #34a825 51%, #34a825 100%);
+  background: -o-linear-gradient(top, #3abd2a 0, #3abd2a 50%, #34a825 51%, #34a825 100%);
+  background: linear-gradient(top, #3abd2a 0, #3abd2a 50%, #34a825 51%, #34a825 100%);
+  -webkit-transform: rotate(-40deg);
+  -moz-transform: rotate(-40deg);
+  -ms-transform: rotate(-40deg);
+  -o-transform: rotate(-40deg);
+  transform: rotate(-40deg);
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+}
+.icon-box-3:hover .icon-box-back2 {
+  color: #fff;
+  -webkit-transform: rotate(-140deg);
+  -moz-transform: rotate(-140deg);
+  -ms-transform: rotate(-140deg);
+  -o-transform: rotate(-140deg);
+  transform: rotate(-140deg);
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+}
+.icon-box-back2 {
+  color: #fff;
+  line-height: 67px;
+  text-align: center;
+  font-size: 25px;
+  background: none;
+  height: 67px;
+  width: 100%;
+  margin: auto;
+  float: left;
+  -webkit-transform: rotate(40deg);
+  -moz-transform: rotate(40deg);
+  -ms-transform: rotate(40deg);
+  -o-transform: rotate(40deg);
+  transform: rotate(40deg);
+  -webkit-transform-origin: center;
+  -moz-transform-origin: center;
+  -ms-transform-origin: center;
+  -o-transform-origin: center;
+  transform-origin: center;
+  -webkit-transition: .5s;
+  -moz-transition: .5s;
+  -ms-transition: .5s;
+  -o-transition: .5s;
+  transition: .5s;
+}
+.icon-box2-title {
+  line-height: 1.3em;
+  margin: 17px 0 9px 0;
+  width: 100%;
+  text-align: center;
+  color: #464a4c;
+  font-size: 20px;
+  font-family: 'Noto Sans',sans-serif;
+  letter-spacing: 0.5px;
+}
+.iconbox-readmore:hover {
+  background: #107fc9;
+  height: 29px;
+  width: 106px;
+  border: 1px solid #0670b7;
+  transition: .5s;
+}
+.iconbox-readmore {
+  background: #3abd2a;
+  height: 29px;
+  width: 106px;
+  border: 1px solid #34a825;
+  transition: .5s;
+  line-height: 27px;
+  text-align: center;
+  margin: 0 auto;
+  border-radius: 0px;
+  cursor: pointer;
+}
+.iconbox-readmore a {
+  font-size: 13px;
+  color: #fff;
+  font-family: 'Noto Sans',sans-serif;
+}
+.icon-box-3:hover .icon-box2-title {
+  color: #34a825;
+}
+.icon-box-3:hover .iconbox-readmore {
+  background: #34a825;
+  border: 1px solid #34a825;
+}
+.icon-stethoscope:before {
+  content: "\e61e";
+  }
+  </style>
+   <div class = "row">
+   <div class="no-pad icon-boxes-1"> 
+   
+ <div class="icon-box-3 wow fadeInUp animated" data-wow-delay="0.6s" data-wow-offset="150" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+   <div class="icon-boxwrap2"><i class="fa fa-medkit icon-box-back2"></i></div>
+   <div class="icon-box2-title">Find pharmacies</div> <p>After you set up you address, a list of nearby pharmacies registred in our system will be displayed .</p>
+   <div class="iconbox-readmore"> <a href="<?php echo $this->url('client/index3',
+           array('controller' => 'index','action'=>'findpharmacy','id'=>$id ));?>"> Find!</a></div></div>
+
+   
+   
+ <div class="icon-box-3 wow fadeInUp animated" data-wow-delay="0.6s" data-wow-offset="150" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+   <div class="icon-boxwrap2"><i class="fa fa-stethoscope icon-box-back2"></i></div>
+   <div class="icon-box2-title">See your prescriptions</div> <p>You can see all prescriptions submitted by you doctor, including all the drugs and various details .</p>
+   <div class="iconbox-readmore"> <a href="<?php echo $this->url('client/index3',
+          array('controller' => 'index','action'=>'seeprescription'));?>"> Check</a></div></div>
+  
+  
+    
+    <div class="icon-box-3 wow fadeInUp animated" data-wow-delay="0.6s" data-wow-offset="150" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+   <div class="icon-boxwrap2"><i class="fa fa-heartbeat icon-box-back2"></i></div>
+   <div class="icon-box2-title">Find meds</div> <p>Search for meds, see their prices, the instructions, active ingredients or various details that you might be interested in.</p>
+   <div class="iconbox-readmore"> <a class= href="<?php  echo $this->url('client/index3',
+          array('controller' => 'index','action'=>'findmeds'));?>">Search</a></div></div>
+         
+           
+   
+    <div class="icon-box-3 wow fadeInUp animated" data-wow-delay="0.6s" data-wow-offset="150" style="visibility: visible;-webkit-animation-delay: 0.6s; -moz-animation-delay: 0.6s; animation-delay: 0.6s;">
+   <div class="icon-boxwrap2"><i class="fa fa-user-md icon-box-back2"></i></div>
+   <div class="icon-box2-title">Find a doctor</div> <p>Search for a doctor, see their specialization, working hours and submit a request if you are their patient.</p>
+   <div class="iconbox-readmore"> <a href="<?php  echo $this->url('client/index3',
+          array('controller' => 'index','action'=>'findmeds'));?>">Search</a></div></div>
+        
+   </div>
+   </div>
+ 

@@ -67,7 +67,8 @@
                         <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
                         
                         <li class="active"><a href="<?php echo $this->url('client/index3', array('controller' => 'index','action'=>'welcome')) ;?>"><?php echo $this->translate('Patient') ?></a>
-                         <ul> <li ><a href="<?php echo $this->url('client/index3', array('controller' => 'index','action'=>'detail')) ;?>"><?php echo $this->translate('Register') ?></a></li>
+                         <ul> <li ><a href="<?php echo $this->url('client/index3', array('controller' => 'auth','action'=>'login')) ;?>"><?php echo $this->translate('Log in') ?></a></li>
+                         	<li ><a href="<?php echo $this->url('client/index3', array('controller' => 'index','action'=>'detail')) ;?>"><?php echo $this->translate('Register') ?></a></li>
                             <li ><a href="<?php echo $this->url('client/index3', array('controller' => 'index','action'=>'createprofile')) ;?>"><?php echo $this->translate('Edit your profile') ?></a></li>
                           <li ><a href="<?php echo $this->url('client/index3', array('controller' => 'index','action'=>'viewprofile')) ;?>"><?php echo $this->translate('View Profile') ?></a></li>
                          </ul>

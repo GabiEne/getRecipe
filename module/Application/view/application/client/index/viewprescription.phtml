@@ -9,10 +9,12 @@ $title = 'Prescriptions';
  <?php $i = 0;?>
   <?php foreach ($prescriptions as $p) : ?>
  <table class="display" >
- <h1><?php $i++; echo "Prescription" . $i; ?></h1>
+ <h2><?php $i++; echo "Prescription No." ." " . $i; ?></h2>
+ <h4><?php echo "Diagnostic:". " " .$p->getDiagnostic();?></h4>
  <thead> 
  <tr>
      <th>Drug Name</th>
+     
 
  </tr>
  </thead>
@@ -27,7 +29,7 @@ $title = 'Prescriptions';
      <td><?php echo $this->escapeHtml($drug->getName());?> </td>
          <?php $pharmacy = $drug->getPharmacy();?> 
          <?php foreach ($pharmacy as $pharma) :?>
-     <td><?php echo"Available at ". $this->escapeHtml($pharma->getName());?> </td>
+     <td><?php echo"Available at ". " " .$this->escapeHtml($pharma->getName());?> </td>
 </tr>
 
 

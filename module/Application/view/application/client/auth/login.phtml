@@ -1,4 +1,13 @@
-<!-- h1>I am in AuthDoctrine IndexController login action index.phtml</h1 -->
+<style>
+body{
+background: url("../../img/3-min.jpg");
+}
+.userlogin{
+float:left;
+padding-top:8%;
+}
+</style>
+<div class ="login userlogin">  
 <?php echo $this->messages; ?>
 
 <?php
@@ -24,6 +33,7 @@ echo $this->form()->closeTag();
         echo 'Not logged in';
     }
 ?>
+</div>
 <!--  
 <p>
 	<a href="<?php //echo $this->url('client/index3', array('controller' => 'registration', 'action' => 'index'));?>"><?php echo $this->translate('Register'); ?></a> |  

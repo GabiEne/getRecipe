@@ -144,6 +144,27 @@ class Prescription{
 		return $this->drugs;
 	}
 	
+
+	/**
+	 * @ORM\Column(type= "string")
+	 *
+	 */
+	
+	protected $diagnostic;
+	
+	
+	
+	public function getDiagnostic(){
+		return $this->diagnostic;
+	
+	}
+	public function setDiagnostic($diagnostic){
+		$this->diagnostic =$diagnostic;
+	}
+	
+	
+	
+	
 	public function __get($property){
 			
 		return $this->$property;

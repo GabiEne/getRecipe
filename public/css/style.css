@@ -481,3 +481,10 @@ background-color: Transparent;
   margin: 0 auto;
   padding-top: 15px
 }
+.signupdoc{
+	  width: 21%;
+}
+.cd-hero-slider li:nth-of-type(5) {
+  background-color: #fff;
+  background-image: url(../../img/1-min.jpg)!important;
+}

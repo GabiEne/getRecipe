@@ -1,9 +1,14 @@
+ <style>
+body{
+background: url("../../img/4-min.jpg");
+}
+</style>
  <div class="page-header" role="navigation">
  <?php
-	 $title = 'Add new doctor';
+	 $title = 'Register as a new doctor';
 	 $this->headTitle($title);
  ?>
-   <h1><?php echo $this->escapeHtml($title); ?></h1>
+   
  </div>
 
   <?php $form->prepare();  ?>
@@ -19,9 +24,6 @@
 	  echo $this->formRow($form->get('username'));
 	  echo $this->formRow($form->get('password'));
   ?>
-  
-  
-  
   </div>
   <div class="form-group">
   <?php 

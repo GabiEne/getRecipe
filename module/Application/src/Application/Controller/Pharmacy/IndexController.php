@@ -20,29 +20,59 @@ use Application\Form\Drugs\DrugsForm;
     	
     }
     public function welcomeAction(){
-    	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-    	$id = $this->params()->fromRoute('idpharma');
-    	$pharmacy = $objectManager->find('Application\Entity\Pharmacy', $id);
+    	$user = $this->identity();
+    	if($user = $this->identity()){
+    		if ($user->getType() == 3) {
+    			
+    			$id=$user->getId();
+    	        $objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+                $pharmacy = $objectManager->find('Application\Entity\Pharmacy', $id);
+    	   }
+    		else{
+    			return $this->redirect()->toRoute('pharmacy/index2',
+    					array('controller' => 'auth', 'action'=> 'login'));
+    		}
+    	}
+    	else {
+    		return $this->redirect()->toRoute('pharmacy/index2',
+    				array('controller' => 'auth', 'action'=> 'login'));
+    	}
+    	
     	$view= new ViewModel(array('id' => $id, 'pharmacy' => $pharmacy));
     	$view->setTemplate('application/pharmacy/index/index');
     	return $view;
-    	 
     }
     
     public function viewMedsAction(){
-    	
-    	$id = $this->params()->fromRoute('idpharma'); //id-ul farmaciei
+    	$user = $this->identity();
+    	if($user = $this->identity()){
+    		if ($user->getType() == 3) {
+    			$id=$user->getId(); //id-ul farmaciei
     	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     	$pharmacy = $objectManager->find('Application\Entity\Pharmacy', $id);
     	$drugs= $pharmacy->getDrugs();
-    	$view= new ViewModel(array('drugs' => $drugs,'id'=>$id));
-    	$view->setTemplate('application/pharmacy/index/viewmeds');
-    	return $view;
-    
+    	
+    		}
+    		else {
+    			return $this->redirect()->toRoute('pharmacy/index2',
+    					array('controller' => 'auth', 'action'=> 'login'));
+    		}
+    }
+    else{
+    	return $this->redirect()->toRoute('pharmacy/index2',
+    			array('controller' => 'auth', 'action'=> 'login'));
+    }
+    $view= new ViewModel(array('drugs' => $drugs,'id'=>$id));
+    $view->setTemplate('application/pharmacy/index/viewmeds');
+    return $view;
     }
     
     public function addMedsAction(){
-    	$idpharma = $this->params()->fromRoute('idpharma');
+    	$user = $this->identity();
+    	if($user = $this->identity()){
+    		if ($user->getType() == 3) {
+    			$idpharma=$user->getId();
+    	
     	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     	$pharmacy = $objectManager->find('Application\Entity\Pharmacy', $idpharma);
     	$form = new DrugsForm($objectManager);
@@ -56,20 +86,19 @@ use Application\Form\Drugs\DrugsForm;
     			$objectManager->persist($pharmacy);
     			$objectManager->flush();
     			return $this->redirect()->toRoute('pharmacy/index2',
-    					array('controller' => 'index', 'action'=> 'viewmeds','idpharma'=>$pharmacy->getId()));
+    					array('controller' => 'index', 'action'=> 'viewmeds'));
     		}
 		}
 		else{
 			$id = $this->params()->fromRoute('id');
-			echo "ba";
-			$idpharma = $this->params()->fromRoute('idpharma');
+			
+			$idpharma = $user->getId();;
 			if ((isset($id))&&(isset($idpharma)) ) {
 				$drug = $objectManager->find('Application\Entity\Drugs', $id);
 				$pharmacy = $objectManager->find('Application\Entity\Pharmacy', $idpharma);
-				//$pharmacy->getDrugs()->remove($drug);
-				echo "ba";
+				
 				$drug->setName($form->getValue('name'));
-				var_dump ($this->request->getPost('name'));
+				
 				if (!isset($drug)) {
 					$this->flashMessenger()->addErrorMessage(sprintf('Could not find client with id %s',$id));
 					return $this->redirect()->toRoute('pharmacy/index2',
@@ -86,12 +115,22 @@ use Application\Form\Drugs\DrugsForm;
 			}
 			
 		
-    		$view= new ViewModel(array('form' => $form));
-    		$view->setTemplate('application/drugs/index/addmeds');
-    		return $view;
     	
-    
+    	}
+    		else{
+    		return $this->redirect()->toRoute('pharmacy/index2',
+    				array('controller' => 'auth', 'action'=> 'login'));
+    	}
     	
+    	}
+    	else{
+    		return $this->redirect()->toRoute('pharmacy/index2',
+    				array('controller' => 'auth', 'action'=> 'login'));
+    	}
+
+    	$view= new ViewModel(array('form' => $form));
+    	$view->setTemplate('application/drugs/index/addmeds');
+    	return $view;
     }
     
     public function editmedAction(){
@@ -109,7 +148,7 @@ use Application\Form\Drugs\DrugsForm;
     	    $drug->setName($this->request->getPost('name'));
     	    $drug->setActiveIngredient($this->request->getPost('activeingredient'));
     	    $drug->setProducer($this->request->getPost('producer'));
-    	    $drug->setPrice($this->request->getPost('producer'));
+    	    $drug->setPrice($this->request->getPost('price'));
     	    $drug->setTherapeutic_action($this->request->getPost('therapeutic_action'));
     	    $drug->setCod_atc($this->request->getPost('cod_atc'));
     	    $objectManager->persist($drug);
@@ -138,14 +177,36 @@ use Application\Form\Drugs\DrugsForm;
     			$pharmacy = $form->getObject();
     			$objectManager->persist($pharmacy);
     			$objectManager->flush();
+    			$authService = $this->getServiceLocator()->get('Zend\Authentication\AuthenticationService');
+    			$adapter = $authService->getAdapter();
+    			$adapter->setIdentityValue($form->get('username')->getValue());
+    			//var_dump($form->get('username')->getValue()); //$data['usr_name']
+    			$adapter->setCredentialValue($form->get('password')->getValue());
+    			 
+    			$authResult = $authService->authenticate();
+    			// echo "<h1>I am here</h1>";
+    			if ($authResult->isValid()) {
+    				$identity = $authResult->getIdentity();
+    				$authService->getStorage()->write($identity);
+    				$time = 1209600;
+    			
+    			}
+    			 else{
+    			 	return $this->redirect()->toRoute('pharmacy/index2',
+    				array('controller' => 'auth', 'action'=> 'login'));;
+    			}
 				return $this->redirect()->toRoute('pharmacy/index2',
-    					array('controller' => 'index', 'action'=> 'welcome','idpharma'=>$pharmacy->getId()));
+    					array('controller' => 'index', 'action'=> 'welcome'));
     		}
     	}
     	else{
-    		$id = $this->params()->fromRoute('id');
-    		if (isset($id)) {
-    		$pharmacy = $objectManager->find('Application\Entity\Pharmacy', $id);
+    		$user = $this->identity();
+    		if($user = $this->identity()){
+    			if ($user->getType() == 3) {
+    				$id=$user->getId();
+    	
+    		    if (isset($id)) {
+    		      $pharmacy = $objectManager->find('Application\Entity\Pharmacy', $id);
     			if (!isset($pharmacy)) {
     				$this->flashMessenger()->addErrorMessage(sprintf('Could not find client with id %s',$id));
     				//return $this->redirect()->toRoute('admin/index4',
@@ -156,26 +217,26 @@ use Application\Form\Drugs\DrugsForm;
     			$form->bind($pharmacy);
     		}
     	}
-    
+    	else {
+    		return $this->redirect()->toRoute('pharmacy/index2',
+    				array('controller' => 'auth', 'action'=> 'login'));;
+    	}
+    		}
+    	}
     	$view= new ViewModel(array('form' => $form));
     	$view->setTemplate('application/pharmacy/index/detail');
     	return $view;
     
     }
     
-    public function deleteDoctorAction(){
+
+    
+    public function seeDetailAction(){
     	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-    	$id = (int) $this->params()->fromRoute('id');
-    	var_dump((int) $this->params()->fromRoute('id'));
-    	$doctor= $objectManager->find('Application\Entity\Doctors', $id);
-    	
-    
-    	if ($this->request->isPost()) {
-    
-    		$objectManager->remove($doctor);
-    		$objectManager->flush();
-    
-    		return $this->redirect()->toRoute('admin/index4',array('controller' => 'index', 'action'=> 'viewdoctors'));
-    	}
+    	$id = $this->params()->fromRoute('idpharma');
+    	$drug = $objectManager->find('Application\Entity\Drugs', $id);
+    	$view= new ViewModel(array('drug' => $drug));
+    	$view->setTemplate('application/drugs/index/viewmedicinedetail');
+    	return $view;
     }
  }
