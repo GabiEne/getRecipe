@@ -51,6 +51,8 @@ public function loginAction()
 						$sessionManager->rememberMe($time);
 					}
 					//- return $this->redirect()->toRoute('home');
+					return $this->redirect()->toRoute('doctor/index1',
+							array('controller' => 'index', 'action'=> 'seepatients'));
 				}
 				foreach ($authResult->getMessages() as $message) {
 					$messages .= "$message\n"; 

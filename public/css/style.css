@@ -484,7 +484,19 @@ background-color: Transparent;
 .signupdoc{
 	  width: 21%;
 }
-.cd-hero-slider li:nth-of-type(5) {
+.cd-hero-slider li:nth-of-type(4) {
   background-color: #fff;
   background-image: url(../../img/1-min.jpg)!important;
+}
+.leaflet{
+ margin: 0px;
+  height: 230px!important;
+  width: 783px;
+}
+.medicineadd{
+	width: 450px;
+	
+}
+.del2{
+	padding: 3px 34px;
 }

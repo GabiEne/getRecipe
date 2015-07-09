@@ -1,32 +1,19 @@
 
 <?php
-
-//echo $this->formRow($form->get('drugname'));
-?>
-
-
-<?php
-$title = 'Medicines';
+ $title = 'Medicines';
  $this->headTitle($title);
  ?>
 
  <h1><?php echo $this->escapeHtml($title); ?></h1>
- 
-
-
- <p>
-
 
  <table class="display" id="example">
- 
  <thead> 
  <tr>
      <th>Name</th>
      <th>Active Ingredient</th>
 	 <th>Producer</th>
 	 <th>Therapeutic Action</th>
-     
- </tr>
+</tr>
  </thead>
  <tbody>
 
@@ -40,9 +27,7 @@ $title = 'Medicines';
        <a style="min-width: 150px; margin: 0 auto;" class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('pharmacy/index2',
           array('controller' => 'index', 'action'=>'seedetail', 'idpharma'=> $drug->getId())); ?>">See Detail</a>
    
-      </td>
-        
-      
+      </td>     
  </tr>
 
  <?php endforeach; ?>

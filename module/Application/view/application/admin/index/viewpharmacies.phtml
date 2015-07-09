@@ -20,8 +20,8 @@ $title = 'Pharmacies';
  <tr>
      <th>Name</th>
      <th>Address</th>
-	
 	 <th>Website</th>
+	 <th>&nbsp </th>
 	
  </tr>
  </thead>
@@ -33,7 +33,16 @@ $title = 'Pharmacies';
      <td><?php echo $this->escapeHtml($pharmacy->address);?></td>
 	
 	 <td><?php echo $this->escapeHtml($pharmacy->website);?></td>
-	 
+	  <td>
+       <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('admin/index4',
+           array('controller' => 'index','action'=>'pharmacyDetail', 'id' => $pharmacy->getId()));?>">Edit Pharmacy</a>
+    	<form class ="del1" method="post" action="<?php echo $this->url('admin/index4',
+              array('controller' => 'index','action'=>'deletePharmacy','id' => $pharmacy->getId()));?>" >
+    	 <input style ="padding: 3px 38px;"class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
+    	 
+     	</form>
+      </td>
+        
 	
         
       

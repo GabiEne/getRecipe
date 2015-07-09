@@ -135,6 +135,16 @@ use Zend\Validator\ValidatorInterface;
 		   				'class' => 'form-control',
 		   		),
 		   ));
+		   $this->add(array(
+		   		'name' => 'description',
+		   		'type' => 'TextArea',
+		   		'options' => array(
+		   				'label' => 'Program',
+		   		),
+		   		'attributes' => array(
+		   				'class' => 'form-control',
+		   		),
+		   ));
 		   
          $this->add(array(
              'name' => 'submit',

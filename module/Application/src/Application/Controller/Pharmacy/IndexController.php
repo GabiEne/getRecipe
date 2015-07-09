@@ -134,8 +134,12 @@ use Application\Form\Drugs\DrugsForm;
     }
     
     public function editmedAction(){
-    	$id = $this->params()->fromRoute('id');
-    	$idpharma = $this->params()->fromRoute('idpharma');
+    	$user = $this->identity();
+    	if($user = $this->identity()){
+    		if ($user->getType() == 3) {
+    			$idpharma=$user->getId();
+    	$id = $this->params()->fromRoute('idpharma');
+    	
     	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
     	$form = new DrugsForm($objectManager);
     	if (isset($id)) {
@@ -144,7 +148,7 @@ use Application\Form\Drugs\DrugsForm;
     		if ($this->request->isPost()) {
     			$form->setData($this->request->getPost());
     		if($form->isValid()) {
-    	    var_dump ($this->request->getPost('name'));
+    	    
     	    $drug->setName($this->request->getPost('name'));
     	    $drug->setActiveIngredient($this->request->getPost('activeingredient'));
     	    $drug->setProducer($this->request->getPost('producer'));
@@ -154,14 +158,24 @@ use Application\Form\Drugs\DrugsForm;
     	    $objectManager->persist($drug);
     	    $objectManager->flush();
     	    return $this->redirect()->toRoute('pharmacy/index2',
-    	    		array('controller' => 'index', 'action'=> 'viewmeds','idpharma'=>$pharmacy->getId()));
+    	    		array('controller' => 'index', 'action'=> 'viewmeds'));
     			}
     		
     	
     		
     		}
     		$form->bind($drug);
-    	}	
+    	}
+    		}
+    		else{
+    			return $this->redirect()->toRoute('pharmacy/index2',
+    					array('controller' => 'auth', 'action'=> 'login'));
+    		}	
+    	}
+    	else{
+    		return $this->redirect()->toRoute('pharmacy/index2',
+    				array('controller' => 'auth', 'action'=> 'login'));
+    	}
     
     	$view= new ViewModel(array('form' => $form));
     	$view->setTemplate('application/drugs/index/addmeds');

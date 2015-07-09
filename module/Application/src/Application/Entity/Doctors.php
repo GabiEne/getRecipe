@@ -97,6 +97,19 @@ class Doctors extends Account {
 	public function setSpecializare($specializare){
 		$this->specializare =$specializare;
 	}
+	/**
+	 * @ORM\Column(type= "text")
+	 *
+	 */
+	protected $description;
+	
+	public function getDescription(){
+		return $this->description;
+	
+	}
+	public function setDescription($description){
+		$this->description =$description;
+	}
 
  	public function __get($property){
  		

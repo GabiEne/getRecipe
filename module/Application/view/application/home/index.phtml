@@ -10,22 +10,23 @@
 				<div class="cd-full-width">
 					<h2>Get Prescription!</h2>
 					<p>See your doctor's recomandation, find meds and place your order to the nearst pharmacy!</p>
-					<a href="<?php echo $this->url('client/index3', array('controller' => 'index', 'action' => 'detail'));?>"class="cd-btn">Register Now!</a>
-				 <div>   <?php // view helper
-                 if ($user = $this->identity()) {
-        echo 'Logged in as ' . $this->escapeHtml($user->getUsername());
-        }
-?>		
-</div>
+					
 				</div> <!-- .cd-full-width -->
 			</li>
 
 			<li>
 				<div class="cd-half-width">
-					<h2>Slide title here</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</p>
-					<a href="#0" class="cd-btn">Start</a>
-					<a href="#0" class="cd-btn secondary">Learn More</a>
+					<h2> Are you a patient?</h2>
+					<p>Register and create a profile in order to connect with your doctor!</p>
+					<a href="<?php echo $this->url('client/index3', array('controller' => 'auth', 'action' => 'login'));?>" class="cd-btn secondary">Log in</a>
+					<a href="<?php echo $this->url('client/index3', array('controller' => 'index', 'action' => 'detail'));?>"class="cd-btn">Register Now!</a>
+					 <div><?php 
+                 		if ($user = $this->identity()) {
+        					echo 'Logged in as ' . $this->escapeHtml($user->getUsername());
+       				 		}
+							?>		
+					 </div>
+					
 				</div> <!-- .cd-half-width -->
 
 				<div class="cd-half-width cd-img-container">
@@ -39,33 +40,32 @@
 				</div> <!-- .cd-half-width.cd-img-container -->
 
 				<div class="cd-half-width">
-					<h2>Slide title here</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In consequatur cumque natus!</p>
-					<a href="#0" class="cd-btn">Start</a>
-					<a href="#0" class="cd-btn secondary">Learn More</a>
+					<h2>Are you a doctor?</h2>
+					<p>Register and create your profile in order to organize your patients and give them prespcriptions!</p>
+					<a href="<?php echo $this->url('doctor/index1', array('controller' => 'auth','action'=>'login')) ;?>" class="cd-btn">Log in</a>
+					<a href="<?php echo $this->url('doctor/index1', array('controller' => 'index','action'=>'detail')) ;?>" class="cd-btn secondary">Register</a>
 				</div> <!-- .cd-half-width -->
 				
 			</li>
 
+			
+
+			<li>
+				<div class="cd-full-width">
+					<h2>Are you a pharmacy?</h2>
+					<p>Register to keep track of your meds and show patients that you have the best price offers!</p>
+					<a href="<?php echo $this->url('pharmacy/index2', array('controller' => 'auth','action'=>'login')) ;?>"class="cd-btn">Log In </a>
+					<a href="<?php echo $this->url('pharmacy/index2', array('controller' => 'index','action'=>'detail')) ;?>" class="cd-btn secondary">Register</a>
+				</div> <!-- .cd-full-width -->
+			</li>
 			<li class="cd-bg-video">
 				<div class="cd-full-width">
-					<h2>Slide title here</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, explicabo.</p>
-					<a href="#0" class="cd-btn">Learn more</a>
+					
 				</div> <!-- .cd-full-width -->
 
 				<div class="cd-bg-video-wrapper" data-video="img/video/video">
 					<!-- video element will be loaded using jQuery -->
 				</div> <!-- .cd-bg-video-wrapper -->
-			</li>
-
-			<li>
-				<div class="cd-full-width">
-					<h2>Slide title here</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi, explicabo.</p>
-					<a href="#0" class="cd-btn">Start</a>
-					<a href="#0" class="cd-btn secondary">Learn More</a>
-				</div> <!-- .cd-full-width -->
 			</li>
 		</ul> <!-- .cd-hero-slider -->
 
@@ -74,11 +74,11 @@
 				<span class="cd-marker item-1"></span>
 				
 				<ul>
-					<li class="selected"><a href="#0">Intro</a></li>
-					<li><a href="#0">Tech 1</a></li>
-					<li><a href="#0">Tech 2</a></li>
+					<li class="selected"><a href="#0">Home</a></li>
+					<li><a href="#0">Patients</a></li>
+					<li><a href="#0">Doctors</a></li>
+					<li><a href="#0">Pharmacy</a></li>
 					<li><a href="#0">Video</a></li>
-					<li><a href="#0">Image</a></li>
 				</ul>
 			</nav> 
 		</div> <!-- .cd-slider-nav -->
@@ -86,12 +86,13 @@
 
 	<main class="cd-main-content">
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam quisquam, rem illum dicta cumque, voluptate fugiat impedit beatae rerum ratione, voluptates nisi magni delectus ab, eaque atque iste. Molestias incidunt nemo veniam alias nam nisi distinctio optio error architecto odit! Illo dicta nulla fugiat distinctio laudantium, corrupti eum unde.
+			Scopul aplicatiei este de a realiza un sistem menit sa interconecteze principalii actori din sfera sistemului medical si eficientizarea interactiunii Medic - Pacient - Farmacie. Partea decizionala a sistemului, medicul, beneficiaza de posibilitatea trimiterii directe a retetei catre pacient, managementul tuturor pacientilor (vizualizarea istoricului medical al pacientului, medicamentele prescrise anterior, stergerea, editarea sau adaugarea unui pacient), precum si de posibilitatea crearii unui profil individual vizibil tuturor pacientilor care contine informatii de natura publica (program, numar de telefon etc). 
+			
 		</p>
 
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam quisquam, rem illum dicta cumque, voluptate fugiat impedit beatae rerum ratione, voluptates nisi magni delectus ab, eaque atque iste. Molestias incidunt nemo veniam alias nam nisi distinctio optio error architecto odit! Illo dicta nulla fugiat distinctio laudantium, corrupti eum unde.
-			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit veniam quisquam, rem illum dicta cumque, voluptate fugiat impedit beatae rerum ratione, voluptates nisi magni delectus ab, eaque atque iste. Molestias incidunt nemo veniam alias nam nisi distinctio optio error architecto odit! Illo dicta nulla fugiat distinctio laudantium, corrupti eum unde.
+			Elementul central al sistemului, pacientul, are posibilitatea cautarii unui medic, cautarii prospectului unui medicament, vizualizarii retetei emise de medic si alegerea medicamentelor prescrise. Dupa ce se realizeaza alegerea medicamentelor, aplicatia va afisa farmaciile ce au pe stoc medicamentele respective. 
+			Farmacia, al treilea element din cadrul aplicatiei, va beneficia de pastrarea stocului de medicamente in baza de date si de gestiunea acestuia, oferta farmaciilor fiind disponibila clientilor, dar si medicilor.
 		</p>
 	</main> <!-- .cd-main-content -->
 	</div>

@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  *  @ORM\Table(name="accounts")
  *  @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="smallint")
- * @ORM\DiscriminatorMap({3 = "Application\Entity\Pharmacy", 2 = "Application\Entity\Doctors",  1 = "Application\Entity\User"})
+ * @ORM\DiscriminatorMap({4 ="Application\Entity\Admin", 3 = "Application\Entity\Pharmacy", 2 = "Application\Entity\Doctors",  1 = "Application\Entity\User"})
  *
  */
 abstract class Account{

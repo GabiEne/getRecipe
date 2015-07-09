@@ -27,8 +27,10 @@ $title = 'Patients';
      <td><?php echo $this->escapeHtml($patient->getFirstname()); ?></td>
      <td><?php echo $this->escapeHtml($patient->getLastname()); ?></td>
      <td><?php echo $this->escapeHtml($patient->getAddress()); ?></td>
-     
-     
+     <td>
+       <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('doctor/index1',
+           array('controller' => 'recipe','action'=>'viewprescription', 'id' => $patient->getId()));?>">View history</a>
+     </td>
         
       
  </tr>

@@ -89,4 +89,37 @@ class RecipeController extends AbstractActionController
     	$view->setTemplate('application/doctor/prescription/prescription');
     	return $view;
     }
+    
+    public function viewPrescriptionAction(){
+    	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+    	
+    	$user = $this->identity();
+    	if($user = $this->identity()){
+    		if ($user->getType() == 2) {
+    			
+    			$idpatient = $this->params()->fromRoute('id');
+    			$patientfound = $objectManager->getRepository('Application\Entity\UserProfile')->findOneBy(
+    					array('id' => $idpatient));
+    			
+    			$idprofil = $patientfound->getUser();
+    			
+    			$prescriptionfound = $objectManager->getRepository('Application\Entity\Prescription')->findBy(
+    					array('user' => $idprofil));
+    	
+    		}
+    		else{
+    			return $this->redirect()->toRoute('doctor/index1',
+    					array('controller' => 'auth', 'action'=> 'login'));
+    		}
+    	}else
+    	{
+    		return $this->redirect()->toRoute('doctor/index1',
+    				array('controller' => 'index', 'action'=> 'detail'));
+    	}
+    	 $view= new ViewModel(array('prescriptions'=>$prescriptionfound));
+  		 $view->setTemplate('application/doctor/index/seeprescription');
+  		 return $view;
+ 
+    	}
+    
 }

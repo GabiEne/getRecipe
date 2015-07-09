@@ -268,35 +268,17 @@ namespace Application\Controller\Client;
      				->andwhere('et.longitude != 0')
      				->andwhere('et.longitude >= '. $userLongitude1)
      				->andwhere('et.longitude <=' . $userLatitude2 );
-
-     	 
-     	            var_dump( $result = $qb->getQuery()->getResult());
-     	
+     				 $pharmacies = $qb->getQuery()->getResult();
+     	           
+     	            $i=0;
+     	            foreach($pharmacies as $pharmacy){
+     	            	$accountfound = $objectManager->getRepository('Application\Entity\Account')->findOneBy(
+     	            			array('id' => $pharmacy['id']));
+     	            	$i++; 
+     	            	$pharmaciesnearby[$i] = $accountfound;
+     	            	
+     	            }
      
-     	
-     	
-     	//$pharmacyTable  =  new \Application\Entity\Pharmacy();
-     	//$select = $pharmacyTable->select()->from(array('et' => $tableName), array(
-     		//	'id',
-     		///	'address',
-     		///	'location_latitude',
-     		////	'location_longtitude',
-     		///	'distance' => $distanceExpression
-     //	));
-     	
-     ///	$select->where("et.location_latitude != 0");
-     	///$select->where("et.location_longtitude != 0");
-     	//$select->having("distance <= ?", $milesradius);
-     	
-     	// paginator if there are lot of stores.
-     	//$page = $this->getRequest()->getParam('page',1);
-     //	$paginator = Zend_Paginator::factory($select);
-     //	$paginator->setItemCountPerPage(10);
-     //	$paginator->setCurrentPageNumber($page);
-     	
-     //	if ($paginator && count($paginator) > 0) {
-     //		$this->view->paginator = $paginator;
-     //	}
      		}	
      		else{
      			return $this->redirect()->toRoute('client/index3',
@@ -307,9 +289,9 @@ namespace Application\Controller\Client;
      		return $this->redirect()->toRoute('client/index3',
      				array('controller' => 'auth', 'action'=> 'login'));
      }
-        $view= new ViewModel(array('id'=>$id));
-     	$view->setTemplate('application/client/index/viewprofile');
-     	return $view;
+       		$view= new ViewModel(array('pharmacies' => $pharmaciesnearby));
+			$view->setTemplate('application/client/index/viewpharmacies');
+			return $view;
    }
      else {
      	return $this->redirect()->toRoute('client/index3',
@@ -346,6 +328,30 @@ namespace Application\Controller\Client;
       	$view->setTemplate('application/client/index/viewmeds');
       	return $view;
  }
+ public function findDoctorAction(){
+ 	
+ 		if($user = $this->identity()){
+ 			if ($user->getType() == 1) {
+ 				$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+ 				$doctors = $objectManager->getRepository('\Application\Entity\Doctors')->findAll();
+ 				$view= new ViewModel(array('doctors' => $doctors));
+ 				$view->setTemplate('application/client/index/viewdoctors');
+ 				return $view;
+ 	
+ 			}
+ 	
+ 			else{
+ 				return $this->redirect()->toRoute('client/index3',
+ 						array('controller' => 'auth', 'action'=> 'login'));
+ 			}
+ 	
+ 		}
+ 		else{
+ 			return $this->redirect()->toRoute('client/index3',
+ 					array('controller' => 'auth', 'action'=> 'login'));
+ 		}
+ 	}
+ 
  
      public function seePrescriptionAction(){
      	$user = $this->identity();

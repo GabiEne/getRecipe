@@ -22,6 +22,7 @@ $title = 'Users';
     
 	
 	 <th>E-Mail</th>
+	  <th>&nbsp</th>
 	 
    
  </tr>
@@ -33,7 +34,6 @@ $title = 'Users';
      <td><?php echo $this->escapeHtml($user->getUsername());?> </td>
      <td><?php echo $this->escapeHtml($user->getEmail());?></td>
 
-	 <td><?php //echo $this->escapeHtml($user->getEmail());?></td>
 	 <td>
        <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('admin/index4',
            array('controller' => 'index','action'=>'detail', 'id' => $user->getId()));?>">Edit User</a>

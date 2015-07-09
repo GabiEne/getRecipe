@@ -1,3 +1,15 @@
-<h1> View from Admin</h1>
-<?php echo $this->navigation('Navigation')->breadcrumbs(); ?>  
-<?php echo $this->navigation('Navigation')->menu(); ?>  
+
+<div class="jumbotron">
+  <div class="container">
+   <h2> Hello, Admin</h2>
+<p> You can manage users if you click the button below. You can search for an user, create or delete an account and also edit an existing one!</p>
+<a style="width:100%" class=" ed btn btn-primary dropdown-toggle" href="<?php echo $this->url('admin/index4',
+           array('controller' => 'index','action'=>'viewusers'));?>">View Users</a>
+<p> See all registered doctors, add a new one, edit an account, search for a doctor or delete an account! </p>
+<a style="width:100%" class=" ed btn btn-primary dropdown-toggle" href="<?php echo $this->url('admin/index4',
+           array('controller' => 'index','action'=>'viewdoctors'));?>">View Doctors</a>
+ <p> Manage pharmacies accounts, delete an existing account, add a new one, or edit details of a pharmacy form here: </p> 
+ <a style="width:100%" class=" ed btn btn-primary dropdown-toggle" href="<?php echo $this->url('admin/index4',
+           array('controller' => 'index','action'=>'viewpharmacies'));?>">View Pharmacies</a>
+  </div>
+</div>

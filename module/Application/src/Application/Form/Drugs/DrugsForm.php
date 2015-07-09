@@ -64,10 +64,10 @@ use Zend\Validator\ValidatorInterface;
 		   		'name' => 'leaflet',
 		   		'type' => 'TextArea',
 		   		'options' => array(
-		   				'label' => 'leaflet',
+		   				'label' => 'Leaflet',
 		   		),
 		   		'attributes' => array(
-		   				'class' => 'form-control',
+		   				'class' => 'form-control leaflet',
 		   				 
 		   		),
 		   ));
@@ -121,7 +121,7 @@ use Zend\Validator\ValidatorInterface;
              'attributes' => array(
                  'value' => 'Add Medicine',
                  'id' => 'submitbutton',
-             	  'class' => 'sign btn btn-primary',
+             	  'class' => 'medicineadd btn btn-primary',
              ),
          ));
         

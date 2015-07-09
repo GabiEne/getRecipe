@@ -1,6 +1,6 @@
  <style>
 body{
-background: url("../../img/4-min.jpg");
+background: url("../../../img/4-min.jpg");
 }
 </style>
  <div class="page-header" role="navigation">
@@ -45,11 +45,20 @@ background: url("../../img/4-min.jpg");
 	 
   ?>
   </div>
-   <div class="form-group">
+  <div class="form-group">
   <?php 
       echo $this->formRow($form->get('specializare'));
-	  echo $this->formSubmit($form->get('submit'));
-	  echo $this->form()->closeTag();
+  ?>
+  </div>
+  <div class="form-group">
+  <?php
+  			 echo $this->formRow($form->get('description'));
+   ?>
+  </div>
+   <div class="form-group">
+  <?php 
+  echo $this->formSubmit($form->get('submit'));
+  echo $this->form()->closeTag();
   ?>
   </div>
  

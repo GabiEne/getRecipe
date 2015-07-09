@@ -1,5 +1,5 @@
 <?php
-namespace Application\Form\Client;
+namespace Application\Form\Admin;
 use Zend\InputFilter\Factory as InputFactory;
 use Zend\InputFilter\InputFilter;
 class LoginFilter extends InputFilter

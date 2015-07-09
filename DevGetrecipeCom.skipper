@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<skipper version="3.2.3.1247" mvc="Zend Framework" orm="Doctrine2" name="Dev.getrecipe.com" uuid="51799609-b8dc-418c-8ba9-a1069de2afe6">
+  <external-module storage-path="module/Application/src/Application/Entity/schema.module.xml"/>
+  <visual-data>
+    <association uuid="4d95c11e-668c-4106-a3b3-1adfac2267b6" color="#C774AF"/>
+    <association uuid="7b54983b-651e-4ee3-bbdf-8876a98faaf4" color="#B31F24"/>
+    <association uuid="b5b2c372-eb38-40d2-aa3a-60a736e7865c" color="#8A54A2"/>
+    <association uuid="ba6297d8-8918-4613-acf5-11767b472d0d" color="#F4931F"/>
+    <module uuid="27449b08-af10-494a-b8bb-8d40be6191fb" position-x="50" position-y="50"/>
+    <project uuid="51799609-b8dc-418c-8ba9-a1069de2afe6" size-x="0" size-x2="1178" size-y="0" size-y2="1006"/>
+  </visual-data>
+</skipper>

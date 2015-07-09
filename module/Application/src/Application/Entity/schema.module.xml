@@ -1,0 +1,191 @@
+<?xml version="1.0"?>
+<skipper version="3.2.3.1247" mvc="Zend Framework" orm="Doctrine2">
+  <module name="\module/Application/src/Application/Entity" local-name="module/Application/src/Application/Entity" namespace="\Application\Entity" local-namespace="\Application\Entity" export-format="Doctrine2Php" export-path="." uuid="27449b08-af10-494a-b8bb-8d40be6191fb">
+    <entity name="\Application\Entity\Account" local-name="Account" namespace="\Application\Entity" uuid="d4b75e89-4174-445e-94dc-41789893e85c">
+      <field name="id" type="integer" required="true" primary="true" uuid="6278e324-63c5-4598-818d-3b60a62da796">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="username" type="string" size="30" uuid="d365a212-7d4e-45e7-aa4c-a7b6aeb37d6e"/>
+      <field name="password" type="string" size="30" uuid="aa39add4-f5f3-4dab-a0c7-d056efb696ee"/>
+      <field name="email" type="string" uuid="70e2d17a-f008-4187-8ca0-562b6ced8551"/>
+      <field name="type" type="string" uuid="5e58b448-5831-4560-a34b-157cf5185c22"/>
+      <field name="isActive" type="smallint" uuid="a290b625-ceed-4ae5-b2d4-e111cd31ef96"/>
+      <field name="discr" type="smallint" uuid="e68b22ce-c31c-4b46-a6da-138d1d67d3f4"/>
+      <inheritance-parent discriminator-field="discr" type="JOINED" uuid="fce97c9f-b5b2-4f2a-9645-88874db8624c"/>
+      <orm-attributes>
+        <attribute name="table">accounts</attribute>
+        <attribute name="export-file-name">Account.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Entity\Doctors" local-name="Doctors" namespace="\Application\Entity" uuid="5224088c-3dfb-451a-ac3d-c316cefcef95">
+      <field name="firstname" type="string" uuid="3bfa6951-e637-415d-934a-77dd7b096f95"/>
+      <field name="lastname" type="string" uuid="bdbeb982-4f0e-45d4-9aaa-40731a8650e8"/>
+      <field name="country" type="string" uuid="3a3ce4b8-2a10-46cd-b242-bb5d7fda3a87"/>
+      <field name="city" type="string" uuid="049f671c-08a3-4aa3-bffe-bc9f1e8df6da"/>
+      <field name="adresa_cabinet" type="string" uuid="8f972e98-139c-4c9e-8cf5-51062c7c9717"/>
+      <field name="specializare" type="string" uuid="90201246-aab0-4f55-9464-e3ed01863262"/>
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="59dd5f88-fb11-44c5-8843-2d9a278a4a38"/>
+      <inheritance-child derived-from="\Application\Entity\Account" discriminator-value="2" uuid="fd86754b-794c-4e10-8706-0947e988ee32"/>
+      <orm-attributes>
+        <attribute name="table">doctors</attribute>
+        <attribute name="export-file-name">Doctors.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Entity\Drugs" local-name="Drugs" namespace="\Application\Entity" uuid="7a3aa6aa-a543-42ff-bde7-df6cb5335750">
+      <field name="id" type="integer" required="true" primary="true" uuid="ada6e1f9-4bb9-4415-981e-713057169b1d">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="name" type="string" uuid="eb6f2c3c-1edd-4ada-ac6a-23e8116e6d32"/>
+      <field name="activeingredient" type="string" uuid="ef54375a-bdec-40cd-9169-23958071e36c"/>
+      <field name="producer" type="string" uuid="c1fedc0b-5fae-4a67-8e94-9208c4d356cb"/>
+      <field name="therapeutic_action" type="string" uuid="a43a892b-0953-4ca1-bc51-558c28941d9b"/>
+      <field name="cod_atc" type="string" uuid="ab44fe83-c9ce-4b0a-a894-3a7a64fd44cc"/>
+      <field name="price" type="float" uuid="e28a9032-75c0-4c3e-bde0-78b805d8fcd4"/>
+      <field name="leaflet" type="text" uuid="f3adf1a8-1031-4b40-bb68-ec21deb0607b"/>
+      <orm-attributes>
+        <attribute name="table">drugs</attribute>
+        <attribute name="export-file-name">Drugs.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Entity\Pharmacy" local-name="Pharmacy" namespace="\Application\Entity" uuid="70ef1a97-4a05-4561-8d2a-65c5d28659e2">
+      <field name="name" type="string" uuid="dbff6c6e-eeda-4726-858c-46ce7ebbec74"/>
+      <field name="address" type="string" uuid="c1b2f5fb-6ecb-4428-bad8-51a4914f577d"/>
+      <field name="longitude" type="float" uuid="9858f509-fd60-45a0-83ae-16f6651d27b5"/>
+      <field name="latitude" type="float" uuid="74d9b1cd-763e-48bb-bd73-e4d4b6332fae"/>
+      <field name="website" type="string" uuid="26021693-f764-4550-9152-4b05dc5f40e9"/>
+      <inheritance-child derived-from="\Application\Entity\Account" discriminator-value="3" uuid="15b068e4-6831-46b2-9dc1-de1972178998"/>
+      <orm-attributes>
+        <attribute name="table">pharmacy</attribute>
+        <attribute name="export-file-name">Pharmacy.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Entity\pharmacy_drugs" local-name="pharmacy_drugs" namespace="\Application\Entity" uuid="b1de4f01-9ec9-4a51-91c0-80714dbcdaa9">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="fc32cca7-412c-4ff3-b88f-5fb9d6670e20"/>
+      <field name="Drugs_id" type="integer" uuid="e043228f-d658-4d83-b07d-8c4988e1e3d6"/>
+    </entity>
+    <many-to-many mn-entity="\Application\Entity\pharmacy_drugs" uuid="52550008-2cb9-4c5c-be39-b7d645478c31">
+      <many-to-many-entity name="\Application\Entity\Pharmacy" owning-side="true" alias="pharmacy" uuid="1852835b-24d7-4106-9413-150086609453"/>
+      <many-to-many-entity name="\Application\Entity\Drugs" owning-side="false" alias="drugs" uuid="6a95fb24-a305-401c-a2f9-65375ff84013">
+        <many-to-many-field from="Drugs_id" to="id"/>
+      </many-to-many-entity>
+    </many-to-many>
+    <entity name="\Application\Entity\Prescription" local-name="Prescription" namespace="\Application\Entity" uuid="e6e5b272-6ecf-43db-a7c5-e32828c945ce">
+      <field name="id" type="integer" required="true" primary="true" uuid="9fb80b5f-cc28-4592-bdf1-79268349ca27">
+        <orm-attributes>
+          <attribute name="generator">
+            <attribute name="strategy">AUTO</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="diagnostic" type="string" uuid="d75b0290-e552-4e97-b51e-0fa643009d33"/>
+      <field name="doctor_id" uuid="2bcfd52e-163f-4b97-b887-440323457078"/>
+      <field name="user_id" uuid="bb03d930-db9c-4202-bd0c-6ffd785c2235"/>
+      <orm-attributes>
+        <attribute name="table">prescription</attribute>
+        <attribute name="export-file-name">Prescription.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Application\Entity\Prescription" to="\Application\Entity\Doctors" owner-alias="" inverse-alias="doctor" many-owner="true" many-inverse="false" uuid="ba6297d8-8918-4613-acf5-11767b472d0d">
+      <association-field from="doctor_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <association from="\Application\Entity\Prescription" to="\Application\Entity\User" owner-alias="" inverse-alias="user" many-owner="true" many-inverse="false" uuid="7b54983b-651e-4ee3-bbdf-8876a98faaf4">
+      <association-field from="user_id" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <entity name="\Application\Entity\prescription_drugs" local-name="prescription_drugs" namespace="\Application\Entity" uuid="053321e4-2e02-4d98-bb5f-7dafb54c2368">
+      <field name="id" type="integer" required="true" unique="true" primary="true" uuid="69669f94-cea7-4246-9714-2fdb55db7119"/>
+      <field name="Prescription_id" type="integer" uuid="455d5c64-7c77-4819-b2fa-49c1808585fb"/>
+      <field name="Drugs_id" type="integer" uuid="67d69840-7c2c-4e03-9b37-51556ae61f57"/>
+    </entity>
+    <many-to-many mn-entity="\Application\Entity\prescription_drugs" uuid="4598fc0b-a036-4f8b-92bc-48f0e2df9dea">
+      <many-to-many-entity name="\Application\Entity\Prescription" owning-side="true" alias="prescription" uuid="efe76208-44e2-48da-8482-5fdae6cd603d">
+        <many-to-many-field from="Prescription_id" to="id"/>
+      </many-to-many-entity>
+      <many-to-many-entity name="\Application\Entity\Drugs" owning-side="false" alias="drugs" uuid="fb682a6b-adf9-4aba-81c5-7fa83228ef10">
+        <many-to-many-field from="Drugs_id" to="id"/>
+        <orm-attributes>
+          <attribute name="cascade">
+            <attribute name="cascade-persist">true</attribute>
+          </attribute>
+        </orm-attributes>
+      </many-to-many-entity>
+    </many-to-many>
+    <entity name="\Application\Entity\User" local-name="User" namespace="\Application\Entity" uuid="90c8e644-32e1-431d-956c-6347a00b5d84">
+      <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="036e9fe1-a338-444a-a78f-2d9c14c2ef22"/>
+      <inheritance-child derived-from="\Application\Entity\Account" discriminator-value="1" uuid="670cb227-b965-4d3e-8cee-c81927c3adf0"/>
+      <orm-attributes>
+        <attribute name="table">clients</attribute>
+        <attribute name="export-file-name">User.php</attribute>
+      </orm-attributes>
+    </entity>
+    <entity name="\Application\Entity\UserProfile" local-name="UserProfile" namespace="\Application\Entity" uuid="e76f56eb-7568-4b5e-8a02-256c024a797d">
+      <field name="id" type="integer" required="true" primary="true" uuid="c11e2dc9-d4d1-47a6-b6c0-df9cafae505b">
+        <orm-attributes>
+          <attribute name="column">id</attribute>
+          <attribute name="generator">
+            <attribute name="strategy">IDENTITY</attribute>
+          </attribute>
+        </orm-attributes>
+      </field>
+      <field name="firstname" type="string" uuid="42b51f43-71f4-4d21-8e2f-54c73b37de55"/>
+      <field name="lastname" type="string" uuid="120c620c-6073-45f9-8231-d49a9cf5b12e"/>
+      <field name="address" type="string" uuid="76f9c7d1-d726-4637-bf5c-642b3d1715b4"/>
+      <field name="dateofbirth" type="datetime" uuid="660dd87a-5746-4067-a360-10b7e30477e2"/>
+      <field name="longitude" type="float" uuid="b5705756-8c9f-4306-9409-f802c2f84bc8"/>
+      <field name="latitude" type="float" uuid="f703f35d-e5a2-40a2-9f50-0a08183b5ecb"/>
+      <field name="user_id" unique="true" uuid="22dbe2dc-227c-4e69-80c1-92837fbb008d"/>
+      <field name="id_doctor" uuid="9e6f9a7c-02c6-470c-9544-d4a15ea3059c"/>
+      <orm-attributes>
+        <attribute name="table">userprofile</attribute>
+        <attribute name="export-file-name">UserProfile.php</attribute>
+      </orm-attributes>
+    </entity>
+    <association from="\Application\Entity\UserProfile" to="\Application\Entity\User" owner-alias="" inverse-alias="user" many-owner="false" many-inverse="false" uuid="4d95c11e-668c-4106-a3b3-1adfac2267b6">
+      <association-field from="user_id" to="id"/>
+      <orm-attributes>
+        <attribute name="on-delete">CASCADE</attribute>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+    <association from="\Application\Entity\UserProfile" to="\Application\Entity\Doctors" owner-alias="" inverse-alias="doctor" many-owner="true" many-inverse="false" uuid="b5b2c372-eb38-40d2-aa3a-60a736e7865c">
+      <association-field from="id_doctor" to="id"/>
+      <orm-attributes>
+        <attribute name="side-owning"/>
+        <attribute name="side-inverse"/>
+      </orm-attributes>
+    </association>
+  </module>
+  <visual-data>
+    <entity uuid="053321e4-2e02-4d98-bb5f-7dafb54c2368" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="25" position-y="406" size-x="0" size-x2="123" size-y="0" size-y2="59"/>
+    <entity uuid="5224088c-3dfb-451a-ac3d-c316cefcef95" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="199" position-y="40" size-x="0" size-x2="120" size-y="0" size-y2="115"/>
+    <entity uuid="70ef1a97-4a05-4561-8d2a-65c5d28659e2" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="41" position-y="223" size-x="0" size-x2="90" size-y="0" size-y2="87"/>
+    <entity uuid="7a3aa6aa-a543-42ff-bde7-df6cb5335750" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="366" position-y="40" size-x="0" size-x2="133" size-y="0" size-y2="129"/>
+    <entity uuid="90c8e644-32e1-431d-956c-6347a00b5d84" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="225" position-y="406" size-x="0" size-x2="69" size-y="0" size-y2="31"/>
+    <entity uuid="b1de4f01-9ec9-4a51-91c0-80714dbcdaa9" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="210" position-y="223" size-x="0" size-x2="99" size-y="0" size-y2="45"/>
+    <entity uuid="d4b75e89-4174-445e-94dc-41789893e85c" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="29" position-y="40" size-x="0" size-x2="114" size-y="0" size-y2="115"/>
+    <entity uuid="e6e5b272-6ecf-43db-a7c5-e32828c945ce" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="383" position-y="223" size-x="0" size-x2="99" size-y="0" size-y2="73"/>
+    <entity uuid="e76f56eb-7568-4b5e-8a02-256c024a797d" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="375" position-y="406" size-x="0" size-x2="115" size-y="0" size-y2="143"/>
+    <inheritance-child uuid="15b068e4-6831-46b2-9dc1-de1972178998" color="#C774AF"/>
+    <inheritance-child uuid="670cb227-b965-4d3e-8cee-c81927c3adf0" color="#8A54A2"/>
+    <inheritance-child uuid="fd86754b-794c-4e10-8706-0947e988ee32" color="#B31F24"/>
+    <many-to-many-association uuid="4598fc0b-a036-4f8b-92bc-48f0e2df9dea" color="#CDC32B"/>
+    <many-to-many-association uuid="52550008-2cb9-4c5c-be39-b7d645478c31" color="#61D351"/>
+    <module uuid="27449b08-af10-494a-b8bb-8d40be6191fb" bg-color="#E7F5FD" size-x="0" size-x2="519" size-y="0" size-y2="569"/>
+  </visual-data>
+</skipper>

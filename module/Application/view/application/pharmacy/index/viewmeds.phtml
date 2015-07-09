@@ -20,6 +20,7 @@ $this->headTitle($title);
  <tr>
      <th>Name</th>
      <th>Price</th>
+   <th>&nbsp;</th>
  </tr>
  </thead>
  <tbody>
@@ -31,10 +32,10 @@ $this->headTitle($title);
 
 	 <td>
        <a class=" ed btn btn-warning dropdown-toggle" href="<?php echo $this->url('pharmacy/index2',
-           array('controller' => 'index','action'=>'editmed', 'id' => $drug->id, 'idpharma'=>$id));?>">Edit Medicine</a>
+           array('controller' => 'index','action'=>'editmed', 'idpharma' => $drug->id));?>">Edit Medicine</a>
     	<form class ="del1" method="post" action="<?php echo $this->url('pharmacy/index2',
               array('controller' => 'index','action'=>'delete','id' => $drug->id,));?>" >
-    	 <input class="del btn btn-danger dropdown-toggle" type="submit" value="Delete">
+    	 <input class="del del2 btn btn-danger dropdown-toggle" type="submit" value="Delete">
     	 
      	</form>
       </td>

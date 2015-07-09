@@ -35,9 +35,10 @@ body{
   </div>
   <div class="form-group">
   <?php 
+  	  echo $this->formRow($form->get('cod_atc'));
+  	  echo $this->formRow($form->get('price'));
       echo $this->formRow($form->get('leaflet'));
-      echo $this->formRow($form->get('cod_atc'));
-	  echo $this->formRow($form->get('price'));
+    
 	 
   ?>
   </div>

@@ -1,3 +1,42 @@
+<style>
+body{
+background: url("../../img/3-min.jpg");
+}
+.userlogin{
+float:left;
+padding-top:8%;
+}
+</style>
+<div class ="login userlogin">  
+<?php echo $this->messages; ?>
+
 <?php
-$this->form->setAction($this->url());
-echo $this->form;
+$form = $this->form;
+$form->setAttribute('action', $this->url('client/index3', array('controller' => 'auth', 'action' => 'login')));
+$form->prepare();
+echo $this->form()->openTag($form);
+// echo $this->formHidden($form->get('id'));
+echo $this->formRow($form->get('username'));
+echo $this->formRow($form->get('password'));
+echo $this->formRow($form->get('rememberme'));
+echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
+?>
+
+<?php // view helper
+    if ($user = $this->identity()) {
+        echo 'Logged in as ' . $this->escapeHtml($user->getUsername());
+?>		
+ | <a href="<?php echo $this->url('client/index3', array('controller' => 'auth', 'action' => 'logout'));?>"><?php echo $this->translate('Logout'); ?></a> 
+<?php
+    } else {
+        echo 'Not logged in';
+    }
+?>
+</div>
+<!--  
+<p>
+	<a href="<?php //echo $this->url('client/index3', array('controller' => 'registration', 'action' => 'index'));?>"><?php echo $this->translate('Register'); ?></a> |  
+	<a href="<?php // echo $this->url('client/index3', array('controller' => 'registration', 'action' => 'forgotten-password'));?>"><?php echo $this->translate('Forgotten Password'); ?></a>
+</p>
+-->

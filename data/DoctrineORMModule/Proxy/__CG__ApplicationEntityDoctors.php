@@ -83,10 +83,10 @@ class Doctors extends \Application\Entity\Doctors implements \Doctrine\ORM\Proxy
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', 'firstname', 'lastname', 'country', 'city', 'adresa_cabinet', 'specializare', 'id', 'username', 'password', 'email', 'type', 'isActive');
+            return array('__isInitialized__', 'firstname', 'lastname', 'country', 'city', 'adresa_cabinet', 'specializare', 'description', 'id', 'username', 'password', 'email', 'type', 'isActive');
         }
 
-        return array('__isInitialized__', 'firstname', 'lastname', 'country', 'city', 'adresa_cabinet', 'specializare', 'id', 'username', 'password', 'email', 'type', 'isActive');
+        return array('__isInitialized__', 'firstname', 'lastname', 'country', 'city', 'adresa_cabinet', 'specializare', 'description', 'id', 'username', 'password', 'email', 'type', 'isActive');
     }
 
     /**
@@ -322,6 +322,28 @@ class Doctors extends \Application\Entity\Doctors implements \Doctrine\ORM\Proxy
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setSpecializare', array($specializare));
 
         return parent::setSpecializare($specializare);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+
+        return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescription($description)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+
+        return parent::setDescription($description);
     }
 
     /**
