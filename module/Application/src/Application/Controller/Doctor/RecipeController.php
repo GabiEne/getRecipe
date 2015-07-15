@@ -44,6 +44,8 @@ class RecipeController extends AbstractActionController
     					$objectManager->flush();
     					//return $this->redirect()->toRoute('admin/index4',
     							//array('controller' => 'index', 'action'=> 'viewusers'));
+    					return $this->redirect()->toRoute('doctor/index1',
+    							array('controller' => 'index', 'action'=> 'seePatients'));
     				}
     			}
     			else{
@@ -60,6 +62,7 @@ class RecipeController extends AbstractActionController
     					//	);
     					//}
     					//$form->bind($client);
+    				
     				
     			}
     		}
