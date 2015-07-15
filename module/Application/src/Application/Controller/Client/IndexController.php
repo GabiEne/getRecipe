@@ -75,8 +75,8 @@ namespace Application\Controller\Client;
      			$renderer  = new \Zend\View\Renderer\PhpRenderer();
      			$message->setTo(array("gabriela.ene02@gmail.com"));
      			$service = new \AcMailer\Service\MailService($message, $transport, $renderer);
-     			$service->setBody("<p>This is the body</p>")
-     			        ->setSubject("This is the subject");
+     			$service->setBody("<p>You received an invitation to join the GetPrescription Application! Join us By clicking this link: http://getrecipe.adsoft-solutions.ro/doctor/index/detail</p>")
+     			        ->setSubject("GetPrescription Invitation");
      	
      			try {
      				$result = $service->send();
