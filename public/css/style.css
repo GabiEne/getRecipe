@@ -197,7 +197,13 @@ margin-top: 8px;
   width: 100%;
   
 }
+#primary_nav_wrap ul ul a{
+	border-bottom: 2px solid white;
+}
 
+.nav.navbar-nav li a:hover {
+  border-bottom: 2px solid #4FA927!important;
+}
 .svg-main {
   fill: #f15a29;
   opacity: 0.8;
@@ -489,7 +495,7 @@ background-color: Transparent;
   background-image: url(../../img/1-min.jpg)!important;
 }
 .leaflet{
- margin: 0px;
+  margin: 0px;
   height: 230px!important;
   width: 783px;
 }
@@ -499,4 +505,7 @@ background-color: Transparent;
 }
 .del2{
 	padding: 3px 34px;
+}
+#pharmacy #email{
+	width:400px !important;
 }

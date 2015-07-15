@@ -88,7 +88,7 @@ use Zend\Validator\ValidatorInterface;
 		   
 		   $this->add(array(
 		   		'name' => 'longitude',
-		   		'type' => 'Text',
+		   		'type' => 'Hidden',
 		   		'options' => array(
 		   				'label' => 'Longitude',
 		   		),
@@ -101,7 +101,7 @@ use Zend\Validator\ValidatorInterface;
 		   
 		   $this->add(array(
 		   		'name' => 'latitude',
-		   		'type' => 'Text',
+		   		'type' => 'Hidden',
 		   		'options' => array(
 		   				'label' => 'Latitude',
 		   		),
@@ -118,7 +118,7 @@ use Zend\Validator\ValidatorInterface;
 		   				'label' => 'E-mail',
 		   		),
 		   		'attributes' => array(
-		   				'class' => 'form-control',
+		   				'class' => 'form-control  pharma',
 		   				'id' => 'email'
 		   		),
 		   		 
