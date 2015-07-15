@@ -73,7 +73,8 @@ namespace Application\Controller\Client;
      			$transport = new \Zend\Mail\Transport\Sendmail();
      			$message   = new \Zend\Mail\Message();
      			$renderer  = new \Zend\View\Renderer\PhpRenderer();
-     			$message->setTo(array("gabriela.ene02@gmail.com"));
+     			$emailto = $formdoc->get('doctoremail')->getValue();
+     			$message->setTo(array($emailto));
      			$service = new \AcMailer\Service\MailService($message, $transport, $renderer);
      			$service->setBody("<p>You received an invitation to join the GetPrescription Application! Join us By clicking this link: http://getrecipe.adsoft-solutions.ro/doctor/index/detail</p>")
      			        ->setSubject("GetPrescription Invitation");
