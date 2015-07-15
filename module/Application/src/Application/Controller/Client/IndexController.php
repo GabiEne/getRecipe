@@ -80,7 +80,7 @@ namespace Application\Controller\Client;
      	
      			try {
      				$result = $service->send();
-     				echo $result->isValid() ? "Success!!" : "Error";
+     				//echo $result->isValid() ? "Success!!" : "Error";
      				return $this->redirect()->toRoute('client/index3',
      						array('controller' => 'index', 'action'=> 'viewprofile'));
      	
