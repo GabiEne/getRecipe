@@ -503,6 +503,11 @@ background-color: Transparent;
 	width: 450px;
 	
 }
+.diagnostic{
+	  width: 951px!important;
+  	  margin-bottom: 10px;
+}
+}
 .del2{
 	padding: 3px 34px;
 }

@@ -81,7 +81,7 @@ class CreatePrescriptionForm extends Form
 						'label' => 'Diagnostic',
 				),
 				'attributes' => array(
-						'class' => 'form-control',
+						'class' => 'form-control diagnostic',
 				),
 		));
 

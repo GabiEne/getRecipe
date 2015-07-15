@@ -13,7 +13,7 @@ $title = 'Prescriptions';
  <h4><?php echo "Diagnostic:". " " .$p->getDiagnostic();?></h4>
  <thead> 
  <tr>
-     <th>Drug Name</th>
+     <th>Meds:</th>
      
 
  </tr>
@@ -29,7 +29,7 @@ $title = 'Prescriptions';
      <td><?php echo $this->escapeHtml($drug->getName());?> </td>
          <?php $pharmacy = $drug->getPharmacy();?> 
          <?php foreach ($pharmacy as $pharma) :?>
-     <td><?php echo"Available at ". " " .$this->escapeHtml($pharma->getName());?> </td>
+     <td><b><?php echo"Available at ". " " .$this->escapeHtml($pharma->getName());?></b> </td>
 </tr>
 
 
