@@ -29,7 +29,7 @@ $title = 'Prescriptions';
      <td><?php echo $this->escapeHtml($drug->getName());?> </td>
          <?php $pharmacy = $drug->getPharmacy();?> 
          <?php foreach ($pharmacy as $pharma) :?>
-     <td><b><?php echo"Available at ". " " .$this->escapeHtml($pharma->getName());?></b> </td>
+     <td><b><?php echo "     " . " Available at ". " " .$this->escapeHtml($pharma->getName())."; ". "Price: ". $drug->getPrice(). "lei";?></b> </td>
 </tr>
 
 
