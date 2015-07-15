@@ -94,4 +94,13 @@ class IndexController extends AbstractActionController
 	 	$view->setTemplate('application/doctor/index/viewpatients');
 	 	return $view;
      }
+     public function seeDetailAction(){
+     	
+     	$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+     	$id = $this->params()->fromRoute('id');
+     	$doctor = $objectManager->find('Application\Entity\Doctors', $id);
+     	$view= new ViewModel(array('doctor' => $doctor));
+     	$view->setTemplate('application/doctor/index/viewprogram');
+     	return $view;
+     }
 }
